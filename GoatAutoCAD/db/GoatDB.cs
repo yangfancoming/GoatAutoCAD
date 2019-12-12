@@ -6,6 +6,24 @@ namespace GoatAutoCAD.db
 {
     public class GoatDB : BaseData
     {
+
+        /// <summary>
+        /// 将块表记录加入到块表中
+        /// </summary>
+        /// <returns></returns>
+        public static ObjectId AddBlockTableRecord(BlockTableRecord btr ,Database db)
+        {
+            ObjectId id = new ObjectId();
+            using (Transaction transaction = db.TransactionManager.StartTransaction())
+            {
+                BlockTable bt = transaction.GetObject(db.BlockTableId, OpenMode.ForWrite) as BlockTable;
+                id = bt.Add(btr);
+                transaction.AddNewlyCreatedDBObject(btr, true);
+                transaction.Commit();
+            }
+            return id;
+        }
+
         public static ObjectId AddToModelSpace(Entity ent) {
             ObjectId entId;
             using (Transaction trans = db.TransactionManager.StartTransaction())

@@ -91,6 +91,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="baseutil\BaseData.cs" />
+    <Compile Include="block\GoatBlock.cs" />
+    <Compile Include="block\GoatBlock.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatBlock.resx</DependentUpon>
+    </Compile>
     <Compile Include="circle\GoatCircle.cs" />
     <Compile Include="db\GoatDB.cs" />
     <Compile Include="form\GoatFormUtil.cs" />
@@ -148,6 +154,11 @@
     <Compile Include="text\GoatText.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="block\GoatBlock.resx">
+      <DependentUpon>GoatBlock.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\GoatFormUtil.resx">
       <DependentUpon>GoatFormUtil.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
