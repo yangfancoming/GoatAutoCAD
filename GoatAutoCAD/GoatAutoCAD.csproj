@@ -109,6 +109,13 @@
     </Compile>
     <Compile Include="myPlugin.cs" />
     <Compile Include="myCommands.cs" />
+    <Compile Include="pick\GoatPick.cs" />
+    <Compile Include="pick\GoatPick.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatPick.resx</DependentUpon>
+    </Compile>
+    <Compile Include="pick\PickUtill.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="selector\GoatSelect.cs" />
     <Compile Include="selector\GoatSelect.Designer.cs">
@@ -132,6 +139,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="myCommands.resx">
       <DependentUpon>myCommands.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pick\GoatPick.resx">
+      <DependentUpon>GoatPick.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>
