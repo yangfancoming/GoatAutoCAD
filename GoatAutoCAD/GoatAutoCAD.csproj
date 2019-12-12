@@ -117,6 +117,12 @@
     <Compile Include="GoatForm.Designer.cs">
       <DependentUpon>GoatForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="layer\GoatLayer.cs" />
+    <Compile Include="layer\GoatLayer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatLayer.resx</DependentUpon>
+    </Compile>
     <Compile Include="line\GoatLine.cs" />
     <Compile Include="line\GoatLine.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -171,6 +177,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GoatForm.resx">
       <DependentUpon>GoatForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="layer\GoatLayer.resx">
+      <DependentUpon>GoatLayer.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="line\GoatLine.resx">
       <DependentUpon>GoatLine.cs</DependentUpon>
