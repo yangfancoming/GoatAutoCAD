@@ -16,7 +16,7 @@ namespace GoatAutoCAD
         public void msg1()
         {
             Entity ent = SelectorUtil.select("\n 选择对象");
-            BaseData.ed.WriteMessage("\n 你选择的对象ObjectId:"+ent.ObjectId.ToString());
+            BaseData.ed.WriteMessage("\n 你选择的对象ObjectId:"+ent.ObjectId);
         }
 
 
