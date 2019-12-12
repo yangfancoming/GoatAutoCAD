@@ -28,7 +28,14 @@ namespace GoatAutoCAD
         }
 
 
+        //  显示非模态对话框  程序焦点可以自由的从 AutoCAD 界面到窗体之间切换，主要用于用户与 AutoCAD 环境的即时交互操作
 
+        [CommandMethod("MyGroup", "form2", "form2", CommandFlags.Modal)]
+        public void ShowModelessDialog()
+        {
+            GoatForm form = new GoatForm();
+            Application.ShowModelessDialog(form);
+        }
     }
 
 }

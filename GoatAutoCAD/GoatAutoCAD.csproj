@@ -99,6 +99,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GoatFormUtil.resx</DependentUpon>
     </Compile>
+    <Compile Include="event\GoatEvent.cs" />
+    <Compile Include="event\GoatEvent.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatEvent.resx</DependentUpon>
+    </Compile>
     <Compile Include="GoatForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,11 @@
   <ItemGroup>
     <EmbeddedResource Include="form\GoatFormUtil.resx">
       <DependentUpon>GoatFormUtil.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="event\GoatEvent.resx">
+      <DependentUpon>GoatEvent.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>
