@@ -87,6 +87,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="baseutil\BaseData.cs" />
     <Compile Include="circle\GoatCircle.cs" />
     <Compile Include="db\GoatDB.cs" />
     <Compile Include="line\GoatLine.cs" />
@@ -94,6 +95,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GoatLine.resx</DependentUpon>
+    </Compile>
+    <Compile Include="message\GoatMessage.cs" />
+    <Compile Include="message\GoatMessage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatMessage.resx</DependentUpon>
     </Compile>
     <Compile Include="myCommands.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -103,6 +110,13 @@
     <Compile Include="myPlugin.cs" />
     <Compile Include="myCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="selector\GoatSelect.cs" />
+    <Compile Include="selector\GoatSelect.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatSelect.resx</DependentUpon>
+    </Compile>
+    <Compile Include="selector\SelectorUtil.cs" />
     <Compile Include="text\GoatText.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -111,8 +125,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GoatLine.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="message\GoatMessage.resx">
+      <DependentUpon>GoatMessage.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="myCommands.resx">
       <DependentUpon>myCommands.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="selector\GoatSelect.resx">
+      <DependentUpon>GoatSelect.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>

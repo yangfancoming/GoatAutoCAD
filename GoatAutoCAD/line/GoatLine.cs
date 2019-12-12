@@ -13,12 +13,12 @@ namespace GoatAutoCAD
     public class GoatLine
     {
 
-        [CommandMethod("MyGroup", "goatLine", "GoatLine", CommandFlags.Modal)]
+        [CommandMethod("MyGroup", "goatLine", "goatLine", CommandFlags.Modal)]
         public void goatLine()
         {
             Line line = new Line(new Point3d(0, 0, 0),new Point3d(100, 100, 0));
             ObjectId id = GoatDB.AddToModelSpace(line);
-            GoatDB.editor.WriteMessage("Hello, this is your first command." + id);
+            GoatDB.ed.WriteMessage("Hello, this is your first command." + id);
         }
 
         [CommandMethod("MyGroup", "goatLines", "goatLines", CommandFlags.Modal)]
@@ -30,7 +30,7 @@ namespace GoatAutoCAD
             list.Add(line1);
             list.Add(line2);
             List<ObjectId> ids = GoatDB.AddToModelSpace(list);
-            GoatDB.editor.WriteMessage("Hello, this is your first command." + ids);
+            GoatDB.ed.WriteMessage("Hello, this is your first command." + ids);
         }
 
     }

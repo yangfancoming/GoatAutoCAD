@@ -21,13 +21,6 @@ namespace GoatAutoCAD
     public class MyCommands
     {
 
-        [CommandMethod("MyGroup", "MyCommand", "MyCommandLocal", CommandFlags.Modal)]
-        public void MyCommand() // This method can have any name
-        {
-            GoatDB.editor.WriteMessage("Hello, this is your first command.");
-        }
-
-
         [CommandMethod("MyGroup", "MyPickFirst", "MyPickFirstLocal", CommandFlags.Modal | CommandFlags.UsePickSet)]
         public void MyPickFirst()
         {
