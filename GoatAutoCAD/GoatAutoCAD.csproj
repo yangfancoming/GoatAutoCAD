@@ -90,6 +90,11 @@
     <Compile Include="circle\GoatCircle.cs" />
     <Compile Include="db\GoatDB.cs" />
     <Compile Include="line\GoatLine.cs" />
+    <Compile Include="line\GoatLine.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatLine.resx</DependentUpon>
+    </Compile>
     <Compile Include="myCommands.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -101,6 +106,11 @@
     <Compile Include="text\GoatText.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="line\GoatLine.resx">
+      <DependentUpon>GoatLine.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GoatLine.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="myCommands.resx">
       <DependentUpon>myCommands.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>

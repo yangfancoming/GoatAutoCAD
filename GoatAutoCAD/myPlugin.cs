@@ -6,6 +6,14 @@ using GoatAutoCAD;
 // This line is not mandatory, but improves loading performances
 [assembly: ExtensionApplication(typeof(MyPlugin))]
 
+/**
+ * [assembly: ExtensionApplication(typeof(ManagedApp.Init))]
+上面表示ExtensionApplication属性，CAD首先查找它标志的类来初始化，
+如果没有找到，就找如上面public class Init : IExtensionApplication 实现了IExtensionApplication的类，
+如果还是没有找到，就跳过初始化。所以上面[assembly: ExtensionApplication(typeof(ManagedApp.Init))]
+和public class Init : IExtensionApplication后面的IExtensionApplication写上一处就可以了。
+*/
+
 namespace GoatAutoCAD
 {
 

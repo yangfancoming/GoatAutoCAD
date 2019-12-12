@@ -1,39 +1,25 @@
 ﻿
-using System.Collections.Generic;
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
-using Autodesk.AutoCAD.Geometry;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
 using GoatAutoCAD.db;
 
+
+/**
+ * .[assembly: CommandClass(typeof(ManagedApp.Commands))]
+表示ManagedApp.Commands是定义CommandClass的，就是说能够执行Commands中定义的命令（CommandMethod）如上面的[CommandMethod("kaka")]和[CommandMethod("GetVersion")]，
+但是不能执行[CommandMethod("Test")]，因为[CommandMethod("Test")]所在的类Initialize()没有定义CommandClass。
+
+注意： 包含命令方法的命令类 文件必须是3个文件组成的那种  不是能单个的cs类 否则 AutoCAD加载dll后报错！
+*/
 [assembly: CommandClass(typeof(MyCommands))]
 namespace GoatAutoCAD
 {
 
     public class MyCommands
     {
-
-        [CommandMethod("MyGroup", "goatLine", "GoatLine", CommandFlags.Modal)]
-        public void goatLine()
-        {
-            Line line = new Line(new Point3d(0, 0, 0),new Point3d(100, 100, 0));
-            ObjectId id = GoatDB.AddToModelSpace(line);
-            GoatDB.editor.WriteMessage("Hello, this is your first command." + id);
-        }
-
-        [CommandMethod("MyGroup", "goatLines", "goatLines", CommandFlags.Modal)]
-        public void goatLines()
-        {
-            Line line1 = new Line(new Point3d(0, 0, 0),new Point3d(100, 100, 0));
-            Line line2 = new Line(new Point3d(10, 50, 0),new Point3d(10, 400, 0));
-            List<Entity> list = new List<Entity>();
-            list.Add(line1);
-            list.Add(line2);
-            List<ObjectId> ids = GoatDB.AddToModelSpace(list);
-            GoatDB.editor.WriteMessage("Hello, this is your first command." + ids);
-        }
 
         [CommandMethod("MyGroup", "MyCommand", "MyCommandLocal", CommandFlags.Modal)]
         public void MyCommand() // This method can have any name
