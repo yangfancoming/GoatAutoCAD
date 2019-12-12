@@ -74,6 +74,9 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>4.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>4.5</RequiredTargetFramework>
     </Reference>
@@ -90,6 +93,18 @@
     <Compile Include="baseutil\BaseData.cs" />
     <Compile Include="circle\GoatCircle.cs" />
     <Compile Include="db\GoatDB.cs" />
+    <Compile Include="form\GoatFormUtil.cs" />
+    <Compile Include="form\GoatFormUtil.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatFormUtil.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GoatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoatForm.Designer.cs">
+      <DependentUpon>GoatForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="line\GoatLine.cs" />
     <Compile Include="line\GoatLine.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -127,6 +142,14 @@
     <Compile Include="text\GoatText.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="form\GoatFormUtil.resx">
+      <DependentUpon>GoatFormUtil.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoatForm.resx">
+      <DependentUpon>GoatForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="line\GoatLine.resx">
       <DependentUpon>GoatLine.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
@@ -177,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
