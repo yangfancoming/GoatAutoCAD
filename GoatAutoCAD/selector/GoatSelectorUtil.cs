@@ -4,7 +4,7 @@ using GoatAutoCAD.baseutil;
 
 namespace GoatAutoCAD.selector
 {
-    public class SelectorUtil : BaseData
+    public class GoatSelectorUtil : BaseData
     {
         /// <summary>
         /// 提示用户选择单个实体

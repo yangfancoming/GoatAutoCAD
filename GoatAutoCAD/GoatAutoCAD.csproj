@@ -198,7 +198,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GoatSelect.resx</DependentUpon>
     </Compile>
-    <Compile Include="selector\SelectorUtil.cs" />
+    <Compile Include="selector\GoatSelectorUtil.cs" />
     <Compile Include="text\GoatText.cs" />
   </ItemGroup>
   <ItemGroup>

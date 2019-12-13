@@ -36,7 +36,7 @@ namespace GoatAutoCAD.operate
 
         public static void moveBySelect(Point3d basePt,Point3d targetPt)
         {
-            Entity ent = SelectorUtil.select("\n 选择要移动的对象");
+            Entity ent = GoatSelectorUtil.select("\n 选择要移动的对象");
             moveByEntity(ent,basePt,targetPt);
         }
     }

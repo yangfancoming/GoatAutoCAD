@@ -15,20 +15,20 @@ namespace GoatAutoCAD
         [CommandMethod("MyGroup", "select1", "select1", CommandFlags.Modal)]
         public void msg1()
         {
-            Entity ent = SelectorUtil.select("\n 选择对象");
+            Entity ent = GoatSelectorUtil.select("\n 选择对象");
             BaseData.ed.WriteMessage("\n 你选择的对象ObjectId:"+ent.ObjectId);
         }
 
         [CommandMethod("MyGroup", "Select2", "Select2", CommandFlags.Modal)]
         public void Select2()
         {
-            SelectorUtil.Select2();
+            GoatSelectorUtil.Select2();
         }
 
         [CommandMethod("MyGroup", "Select3", "Select3", CommandFlags.Modal)]
         public void Select3()
         {
-            SelectorUtil.Select3();
+            GoatSelectorUtil.Select3();
         }
 
     }
