@@ -62,8 +62,6 @@ namespace GoatAutoCAD.db
             return list;
         }
 
-
-
         // 添加 单个 层表
         public static ObjectId addLayerTableR1ecord(LayerTableRecord ltr)
         {

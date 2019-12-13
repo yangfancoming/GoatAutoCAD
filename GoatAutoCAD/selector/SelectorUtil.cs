@@ -25,5 +25,33 @@ namespace GoatAutoCAD.selector
             }
             return entity;
         }
+
+        public static void Select2()
+        {
+            PromptSelectionOptions selectionOp = new PromptSelectionOptions();
+            PromptSelectionResult ssRes = ed.GetSelection(selectionOp);
+            if (ssRes.Status == PromptStatus.OK)
+            {
+                SelectionSet SS = ssRes.Value;
+                int nCount = SS.Count;
+                ed.WriteMessage("选择了{0}个实体" , nCount);
+            }
+        }
+
+        public static void Select3()
+        {
+            PromptSelectionOptions selectionOp = new PromptSelectionOptions();
+            //创建选择集过滤器，只选择块对象
+            TypedValue[] filList = new TypedValue[1];
+            filList[0] = new TypedValue((int)DxfCode.Start,"INSERT");
+            SelectionFilter filter = new SelectionFilter(filList);
+            PromptSelectionResult ssRes = ed.GetSelection(selectionOp, filter);
+            if (ssRes.Status == PromptStatus.OK)
+            {
+                SelectionSet SS = ssRes.Value;
+                int nCount = SS.Count;
+                ed.WriteMessage("选择了{0}个块" , nCount);
+            }
+        }
     }
 }

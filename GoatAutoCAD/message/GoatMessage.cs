@@ -1,5 +1,6 @@
 ﻿
 
+using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
 using GoatAutoCAD.db;
@@ -22,7 +23,7 @@ namespace GoatAutoCAD
         [CommandMethod("MyGroup", "msg2", "msg2", CommandFlags.Modal)]
         public void msg2()
         {
-            Autodesk.AutoCAD.ApplicationServices.Application.ShowAlertDialog("Hello, this is msg2.");
+            Application.ShowAlertDialog("Hello, this is msg2.");
         }
 
     }

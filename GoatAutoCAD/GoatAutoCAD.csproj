@@ -142,6 +142,19 @@
     </Compile>
     <Compile Include="myPlugin.cs" />
     <Compile Include="myCommands.cs" />
+    <Compile Include="operate\GoatDelete.cs" />
+    <Compile Include="operate\GoatDelete.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatDelete.resx</DependentUpon>
+    </Compile>
+    <Compile Include="operate\GoatDeleteUtil.cs" />
+    <Compile Include="operate\GoatMove.cs" />
+    <Compile Include="operate\GoatMove.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatMove.resx</DependentUpon>
+    </Compile>
     <Compile Include="pick\GoatPick.cs" />
     <Compile Include="pick\GoatPick.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -195,6 +208,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="myCommands.resx">
       <DependentUpon>myCommands.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="operate\GoatDelete.resx">
+      <DependentUpon>GoatDelete.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="operate\GoatMove.resx">
+      <DependentUpon>GoatMove.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>
