@@ -155,6 +155,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GoatMove.resx</DependentUpon>
     </Compile>
+    <Compile Include="operate\GoatMoveUtil.cs" />
     <Compile Include="pick\GoatPick.cs" />
     <Compile Include="pick\GoatPick.Designer.cs">
       <AutoGen>True</AutoGen>
