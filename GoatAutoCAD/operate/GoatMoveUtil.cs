@@ -29,6 +29,7 @@ namespace GoatAutoCAD.operate
 
         public static void moveByEntity(Entity entity,Point3d basePt,Point3d targetPt)
         {
+            if (entity == null)  return;
             moveById(entity.Id,basePt,targetPt);
         }
 

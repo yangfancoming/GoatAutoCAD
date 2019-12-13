@@ -29,6 +29,7 @@ namespace GoatAutoCAD.operate
         /// <returns>true：成功 false：失败</returns>
         public static void deleteByEntity(Entity entity)
         {
+            if (entity == null)  return;
             deleteById(entity.Id);
         }
 
