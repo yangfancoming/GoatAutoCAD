@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using GoatAutoCAD.baseutil;
@@ -67,16 +70,16 @@ namespace GoatAutoCAD.selector
             PromptSelectionResult ents = ed.GetSelection();
             if (ents.Status == PromptStatus.OK)
             {
-                using (Transaction transaction = db.TransactionManager.StartTransaction())
+                using (Transaction trans = db.TransactionManager.StartTransaction())
                 {
                     SelectionSet SS = ents.Value;
                     foreach (ObjectId id in SS.GetObjectIds())
                     {
-                        entity = (Entity)transaction.GetObject(id, OpenMode.ForWrite, true);
+                        entity = (Entity)trans.GetObject(id, OpenMode.ForWrite, true);
                         if (entity != null)
                             EntityCollection.Add(entity);
                     }
-                    transaction.Commit();
+                    trans.Commit();
                 }
             }
             return EntityCollection;
@@ -95,19 +98,22 @@ namespace GoatAutoCAD.selector
             PromptSelectionResult ents = ed.SelectAll();
             if (ents.Status == PromptStatus.OK)
             {
-                using (Transaction transaction = db.TransactionManager.StartTransaction())
+                using (Transaction trans = db.TransactionManager.StartTransaction())
                 {
                     SelectionSet ss = ents.Value;
                     foreach (ObjectId id in ss.GetObjectIds())
                     {
-                        entity = transaction.GetObject(id, OpenMode.ForWrite, true) as Entity;
+                        entity = trans.GetObject(id, OpenMode.ForWrite, true) as Entity;
                         if (entity != null)
                             EntityCollection.Add(entity);
                     }
-                    transaction.Commit();
+                    trans.Commit();
                 }
             }
             return EntityCollection;
         }
+
+
+
     }
 }

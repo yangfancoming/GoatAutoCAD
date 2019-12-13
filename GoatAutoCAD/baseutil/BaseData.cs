@@ -4,7 +4,7 @@ using Autodesk.AutoCAD.EditorInput;
 
 namespace GoatAutoCAD.baseutil
 {
-    public class BaseData
+    public  class BaseData
     {
         public static Database db = Application.DocumentManager.MdiActiveDocument.Database;
         public static Document doc = Application.DocumentManager.MdiActiveDocument;
