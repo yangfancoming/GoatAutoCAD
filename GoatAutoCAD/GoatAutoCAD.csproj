@@ -98,6 +98,11 @@
       <DependentUpon>GoatBlock.resx</DependentUpon>
     </Compile>
     <Compile Include="circle\GoatCircle.cs" />
+    <Compile Include="circle\GoatCircle.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatCircle.resx</DependentUpon>
+    </Compile>
     <Compile Include="db\GoatDB.cs" />
     <Compile Include="form\GoatFormUtil.cs" />
     <Compile Include="form\GoatFormUtil.Designer.cs">
@@ -142,6 +147,7 @@
     </Compile>
     <Compile Include="myPlugin.cs" />
     <Compile Include="myCommands.cs" />
+    <Compile Include="operate\GoatCopyUtil.cs" />
     <Compile Include="operate\GoatDelete.cs" />
     <Compile Include="operate\GoatDelete.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -156,6 +162,12 @@
       <DependentUpon>GoatMove.resx</DependentUpon>
     </Compile>
     <Compile Include="operate\GoatMoveUtil.cs" />
+    <Compile Include="operate\GoatCopy.cs" />
+    <Compile Include="operate\GoatCopy.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatCopy.resx</DependentUpon>
+    </Compile>
     <Compile Include="pick\GoatPick.cs" />
     <Compile Include="pick\GoatPick.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -176,6 +188,11 @@
   <ItemGroup>
     <EmbeddedResource Include="block\GoatBlock.resx">
       <DependentUpon>GoatBlock.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="circle\GoatCircle.resx">
+      <DependentUpon>GoatCircle.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -219,6 +236,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="operate\GoatMove.resx">
       <DependentUpon>GoatMove.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="operate\GoatCopy.resx">
+      <DependentUpon>GoatCopy.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>

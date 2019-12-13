@@ -1,11 +1,26 @@
+﻿
+
 using System;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
+using Autodesk.AutoCAD.Runtime;
+using GoatAutoCAD;
+using GoatAutoCAD.db;
 
-namespace GoatAutoCAD.circle
+[assembly: CommandClass(typeof(GoatCircle))]
+namespace GoatAutoCAD
 {
+
     public class GoatCircle
     {
+
+        [CommandMethod("MyGroup", "circle1", "circle1", CommandFlags.Modal)]
+        public void circle1()
+        {
+            Circle circle = Circle(new Point3d(0, 0, 0),10);
+            GoatDB.AddToModelSpace(circle);
+        }
+
         /// <summary>
         /// 由圆心和半径创建圆
         /// </summary>
@@ -39,8 +54,5 @@ namespace GoatAutoCAD.circle
             return new Circle(cenPt, Vector3d.ZAxis, radius);
         }
     }
-
-
-
 
 }
