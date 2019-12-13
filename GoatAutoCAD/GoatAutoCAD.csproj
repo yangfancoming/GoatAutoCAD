@@ -164,6 +164,13 @@
       <DependentUpon>GoatDelete.resx</DependentUpon>
     </Compile>
     <Compile Include="operate\GoatDeleteUtil.cs" />
+    <Compile Include="operate\GoatMirrorUtil.cs" />
+    <Compile Include="operate\GoatMirror.cs" />
+    <Compile Include="operate\GoatMirror.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatMirror.resx</DependentUpon>
+    </Compile>
     <Compile Include="operate\GoatMove.cs" />
     <Compile Include="operate\GoatMove.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -245,6 +252,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="operate\GoatDelete.resx">
       <DependentUpon>GoatDelete.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="operate\GoatMirror.resx">
+      <DependentUpon>GoatMirror.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>
