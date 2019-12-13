@@ -103,6 +103,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GoatCircle.resx</DependentUpon>
     </Compile>
+    <Compile Include="circle\GoatCircleUtil.cs" />
     <Compile Include="db\GoatDB.cs" />
     <Compile Include="form\GoatFormUtil.cs" />
     <Compile Include="form\GoatFormUtil.Designer.cs">
