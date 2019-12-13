@@ -105,6 +105,13 @@
     </Compile>
     <Compile Include="circle\GoatCircleUtil.cs" />
     <Compile Include="db\GoatDB.cs" />
+    <Compile Include="dictionary\GoatDictionary.cs" />
+    <Compile Include="dictionary\GoatDictionary.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatDictionary.resx</DependentUpon>
+    </Compile>
+    <Compile Include="dictionary\GoatDictionaryUtil.cs" />
     <Compile Include="form\GoatFormUtil.cs" />
     <Compile Include="form\GoatFormUtil.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -195,6 +202,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="circle\GoatCircle.resx">
       <DependentUpon>GoatCircle.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dictionary\GoatDictionary.resx">
+      <DependentUpon>GoatDictionary.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>
