@@ -12,12 +12,16 @@ namespace GoatAutoCAD.selector
         /// </summary>
         /// <param name="msg">提示</param>
         /// <returns>返回Point3d</returns>
+        /// <summary>
         public static Point3d pick(string msg){
-            PromptPointResult pt = ed.GetPoint(msg);
-            if (pt.Status == PromptStatus.OK){
-                return pt.Value;
+            #region 提示用户拾取点
+            PromptPointOptions options = new PromptPointOptions(msg);
+            PromptPointResult pt = ed.GetPoint(options);
+            if (pt.Status != PromptStatus.OK){
+                return new Point3d();
             }
-            return new Point3d();
+            return pt.Value;
+            #endregion
         }
     }
 }

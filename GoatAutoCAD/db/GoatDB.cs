@@ -58,7 +58,6 @@ namespace GoatAutoCAD.db
                 }
                 trans.Commit(); //提交事务处理
             }
-
             return list;
         }
 
