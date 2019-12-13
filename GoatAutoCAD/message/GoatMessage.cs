@@ -3,7 +3,7 @@
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
-using GoatAutoCAD.db;
+using GoatAutoCAD.operate;
 
 [assembly: CommandClass(typeof(GoatMessage))]
 namespace GoatAutoCAD
@@ -15,7 +15,7 @@ namespace GoatAutoCAD
         [CommandMethod("MyGroup", "msg1", "msg1", CommandFlags.Modal)]
         public void msg1()
         {
-            GoatDB.ed.WriteMessage("Hello, this is msg1.");
+            GoatMessageUtil.msg("Hello, this is msg1");
         }
 
 

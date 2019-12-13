@@ -135,6 +135,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GoatLine.resx</DependentUpon>
     </Compile>
+    <Compile Include="message\GoatMessageUtil.cs" />
     <Compile Include="message\GoatMessage.cs" />
     <Compile Include="message\GoatMessage.Designer.cs">
       <AutoGen>True</AutoGen>
