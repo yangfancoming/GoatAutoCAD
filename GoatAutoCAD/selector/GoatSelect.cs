@@ -4,6 +4,7 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
 using GoatAutoCAD.baseutil;
+using GoatAutoCAD.operate;
 using GoatAutoCAD.selector;
 
 [assembly: CommandClass(typeof(GoatSelect))]
@@ -31,6 +32,20 @@ namespace GoatAutoCAD
             GoatSelectorUtil.Select3();
         }
 
+        [CommandMethod("MyGroup", "selects", "selects", CommandFlags.Modal)]
+        public void selects()
+        {
+            DBObjectCollection list = GoatSelectorUtil.selects();
+            GoatMessageUtil.msg(list.Count.ToString());
+
+        }
+        [CommandMethod("MyGroup", "selectAll", "selectAll", CommandFlags.Modal)]
+        public void selectAll()
+        {
+            DBObjectCollection list = GoatSelectorUtil.selectAll();
+            GoatMessageUtil.msg(list.Count.ToString());
+
+        }
     }
 
 }

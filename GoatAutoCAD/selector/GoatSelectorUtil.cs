@@ -53,5 +53,61 @@ namespace GoatAutoCAD.selector
                 ed.WriteMessage("选择了{0}个块" , nCount);
             }
         }
+
+
+
+        /// <summary>
+        /// 选择集合
+        /// </summary>
+        /// <returns></returns>
+        public static DBObjectCollection selects()
+        {
+            Entity entity;
+            DBObjectCollection EntityCollection = new DBObjectCollection();
+            PromptSelectionResult ents = ed.GetSelection();
+            if (ents.Status == PromptStatus.OK)
+            {
+                using (Transaction transaction = db.TransactionManager.StartTransaction())
+                {
+                    SelectionSet SS = ents.Value;
+                    foreach (ObjectId id in SS.GetObjectIds())
+                    {
+                        entity = (Entity)transaction.GetObject(id, OpenMode.ForWrite, true);
+                        if (entity != null)
+                            EntityCollection.Add(entity);
+                    }
+                    transaction.Commit();
+                }
+            }
+            return EntityCollection;
+        }
+
+
+
+        /// <summary>
+        /// 选择所有对象
+        /// </summary>
+        /// <returns></returns>
+        public static DBObjectCollection selectAll()
+        {
+            Entity entity;
+            DBObjectCollection EntityCollection = new DBObjectCollection();
+            PromptSelectionResult ents = ed.SelectAll();
+            if (ents.Status == PromptStatus.OK)
+            {
+                using (Transaction transaction = db.TransactionManager.StartTransaction())
+                {
+                    SelectionSet ss = ents.Value;
+                    foreach (ObjectId id in ss.GetObjectIds())
+                    {
+                        entity = transaction.GetObject(id, OpenMode.ForWrite, true) as Entity;
+                        if (entity != null)
+                            EntityCollection.Add(entity);
+                    }
+                    transaction.Commit();
+                }
+            }
+            return EntityCollection;
+        }
     }
 }

@@ -1,7 +1,10 @@
 ﻿
 
+using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
+using GoatAutoCAD.db;
+using GoatAutoCAD.operate;
 
 // This line is not mandatory, but improves loading performances
 [assembly: ExtensionApplication(typeof(MyPlugin))]
@@ -22,12 +25,19 @@ namespace GoatAutoCAD
 
         void IExtensionApplication.Initialize()
         {
-
+            //加载dll的时候执行相关加载操作
+            GoatMessageUtil.msg("\n 插件加载 \n");
         }
 
         void IExtensionApplication.Terminate()
         {
+            //这个是退出时执行
+            GoatMessageUtil.msg("\n 插件卸载 \n");
+
         }
+
+
+
 
     }
 
