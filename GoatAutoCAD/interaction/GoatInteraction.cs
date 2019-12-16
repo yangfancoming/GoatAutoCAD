@@ -16,27 +16,30 @@ namespace GoatAutoCAD
     public class GoatInteraction
     {
         [CommandMethod("MyGroup", "interaction1", "interaction1", CommandFlags.Modal)]
-        public void interaction1()
-        {
+        public void interaction1() {
             DBObjectCollection list = GoatSelectorUtil.selectAll();
             List<ObjectId> entityIds = new List<ObjectId>();
-            foreach (DBObject o in list)
-            {
+            foreach (DBObject o in list){
                 entityIds.Add(o.Id);
             }
             InteractionUtil.HighlightObjects(entityIds);
         }
 
         [CommandMethod("MyGroup", "interaction2", "interaction2", CommandFlags.Modal)]
-        public void interaction2()
-        {
+        public void interaction2() {
             DBObjectCollection list = GoatSelectorUtil.selectAll();
             List<ObjectId> entityIds = new List<ObjectId>();
-            foreach (DBObject o in list)
-            {
+            foreach (DBObject o in list){
                 entityIds.Add(o.Id);
             }
             InteractionUtil.UnhighlightObjects(entityIds);
+        }
+
+        [CommandMethod("MyGroup", "TestKeywords", "TestKeywords", CommandFlags.Modal)]
+        public void TestKeywords() {
+            string[] keys = { "A", "B", "C", "D" };
+            var key = InteractionUtil.GetKeywords("\nChoose an option", keys, 3);
+            GoatMessageUtil.msg("You chose {0}.", key);
         }
 
     }

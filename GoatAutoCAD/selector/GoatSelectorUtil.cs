@@ -91,18 +91,14 @@ namespace GoatAutoCAD.selector
         /// 选择所有对象
         /// </summary>
         /// <returns></returns>
-        public static DBObjectCollection selectAll()
-        {
+        public static DBObjectCollection selectAll(){
             Entity entity;
             DBObjectCollection EntityCollection = new DBObjectCollection();
             PromptSelectionResult ents = ed.SelectAll();
-            if (ents.Status == PromptStatus.OK)
-            {
-                using (Transaction trans = db.TransactionManager.StartTransaction())
-                {
+            if (ents.Status == PromptStatus.OK){
+                using (Transaction trans = db.TransactionManager.StartTransaction()){
                     SelectionSet ss = ents.Value;
-                    foreach (ObjectId id in ss.GetObjectIds())
-                    {
+                    foreach (ObjectId id in ss.GetObjectIds()){
                         entity = trans.GetObject(id, OpenMode.ForWrite, true) as Entity;
                         if (entity != null)
                             EntityCollection.Add(entity);
