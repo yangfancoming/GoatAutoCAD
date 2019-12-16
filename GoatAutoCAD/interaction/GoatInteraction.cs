@@ -15,7 +15,6 @@ namespace GoatAutoCAD
 
     public class GoatInteraction
     {
-        // 命令行消息提示
         [CommandMethod("MyGroup", "interaction1", "interaction1", CommandFlags.Modal)]
         public void interaction1()
         {
@@ -28,6 +27,17 @@ namespace GoatAutoCAD
             InteractionUtil.HighlightObjects(entityIds);
         }
 
+        [CommandMethod("MyGroup", "interaction2", "interaction2", CommandFlags.Modal)]
+        public void interaction2()
+        {
+            DBObjectCollection list = GoatSelectorUtil.selectAll();
+            List<ObjectId> entityIds = new List<ObjectId>();
+            foreach (DBObject o in list)
+            {
+                entityIds.Add(o.Id);
+            }
+            InteractionUtil.UnhighlightObjects(entityIds);
+        }
 
     }
 

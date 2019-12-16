@@ -1,10 +1,8 @@
 ﻿
 
-using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
-using GoatAutoCAD.baseutil;
 using GoatAutoCAD.db;
 using GoatAutoCAD.operate;
 
@@ -12,9 +10,7 @@ using GoatAutoCAD.operate;
 namespace GoatAutoCAD
 {
 
-    public class GoatEvent
-    {
-
+    public class GoatEvent {
         /**
             加载程序运行” event1”命令后，每当数据库中删除对象时，则跳出警告框显示被删除对象的ObjectId。
             当然你也可以根据你自己的需要更改db_ObjectErased()函数里面的内容来对数据库中删除对象做出所需的反应。

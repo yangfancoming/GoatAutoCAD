@@ -4,7 +4,6 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
-using GoatAutoCAD.db;
 
 
 /**

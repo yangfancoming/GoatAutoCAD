@@ -1,9 +1,7 @@
 ﻿
 
-using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
-using GoatAutoCAD.db;
 using GoatAutoCAD.operate;
 
 // This line is not mandatory, but improves loading performances
