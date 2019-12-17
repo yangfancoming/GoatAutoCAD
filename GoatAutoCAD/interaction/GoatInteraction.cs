@@ -1,11 +1,9 @@
 ﻿
 
 using System.Collections.Generic;
-using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
-using GoatAutoCAD.baseutil;
 using GoatAutoCAD.interaction;
 using GoatAutoCAD.operate;
 using GoatAutoCAD.selector;

@@ -1,6 +1,5 @@
 using Autodesk.AutoCAD.DatabaseServices;
 using GoatAutoCAD.baseutil;
-using GoatAutoCAD.selector;
 
 namespace GoatAutoCAD.operate {
 

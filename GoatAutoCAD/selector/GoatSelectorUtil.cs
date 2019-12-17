@@ -1,7 +1,6 @@
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using GoatAutoCAD.baseutil;
-using GoatAutoCAD.db;
 
 namespace GoatAutoCAD.selector
 {
