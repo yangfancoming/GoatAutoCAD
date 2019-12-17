@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.AutoCAD.ApplicationServices;
@@ -13,10 +14,24 @@ namespace GoatAutoCAD.db
         public static Document doc = Application.DocumentManager.MdiActiveDocument;
         public static Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
 
-        public static Entity getEntityById(ObjectId objectId) {
+
+        /// <summary>
+        /// Opens object for write.
+        /// </summary>
+        /// <typeparam name="T">The type of object.</typeparam>
+        /// <param name="id">The object ID.</param>
+        /// <param name="action">The action.</param>
+        public static void QOpenForWrite<T>(this ObjectId id, Action<T> action) where T : DBObject  {
+            using (var trans = id.Database.TransactionManager.StartTransaction()) {
+                action(trans.GetObject(id, OpenMode.ForWrite) as T);
+                trans.Commit();
+            }
+        }
+
+        public static Entity getEntityById(this ObjectId objectId) {
             Entity entity;
             using (Transaction transaction = db.TransactionManager.StartTransaction()){
-                entity = (Entity)transaction.GetObject(objectId, OpenMode.ForWrite, true);
+                entity = transaction.GetObject(objectId, OpenMode.ForWrite, false) as Entity;
                 transaction.Commit();
             }
             return entity;
@@ -26,7 +41,7 @@ namespace GoatAutoCAD.db
         /// 将块表记录加入到块表中
         /// </summary>
         /// <returns></returns>
-        public static ObjectId AddBlockTableRecord(BlockTableRecord btr, Database db){
+        public static ObjectId AddBlockTableRecord(this BlockTableRecord btr){
             ObjectId id = new ObjectId();
             using (Transaction trans = db.TransactionManager.StartTransaction()){
                 BlockTable bt = trans.GetObject(db.BlockTableId, OpenMode.ForWrite) as BlockTable;
@@ -70,7 +85,7 @@ namespace GoatAutoCAD.db
         }
 
         // 添加 单个 层表
-        public static ObjectId addLayerTableR1ecord(LayerTableRecord ltr){
+        public static ObjectId addLayerTableR1ecord(this LayerTableRecord ltr){
             ObjectId id = new ObjectId();
             // 获取当前文档和数据库，并启动事务；
             using (Transaction acTrans = db.TransactionManager.StartTransaction()){

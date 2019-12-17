@@ -18,7 +18,7 @@ namespace GoatAutoCAD
             // 新创建一个图层表记录，并命名为”MyLayer”
             LayerTableRecord ltr = new LayerTableRecord();
             ltr.Name = "luck";
-            GoatDB.addLayerTableR1ecord(ltr);
+            ltr.addLayerTableR1ecord();
         }
 
 

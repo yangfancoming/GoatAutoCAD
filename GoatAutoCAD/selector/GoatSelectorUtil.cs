@@ -15,7 +15,7 @@ namespace GoatAutoCAD.selector
         public static Entity select(string msg){
             PromptEntityResult ent = ed.GetEntity(msg);
             if (ent.Status == PromptStatus.OK) {
-                return GoatDB.getEntityById(ent.ObjectId);
+                return ent.ObjectId.getEntityById();
             }
             return null;
         }

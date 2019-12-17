@@ -164,6 +164,7 @@
     </Compile>
     <Compile Include="myPlugin.cs" />
     <Compile Include="myCommands.cs" />
+    <Compile Include="operate\GoatColorUtil.cs" />
     <Compile Include="operate\GoatCopyUtil.cs" />
     <Compile Include="operate\GoatDelete.cs" />
     <Compile Include="operate\GoatDelete.Designer.cs">
@@ -172,6 +173,12 @@
       <DependentUpon>GoatDelete.resx</DependentUpon>
     </Compile>
     <Compile Include="operate\GoatDeleteUtil.cs" />
+    <Compile Include="operate\GoatColor.cs" />
+    <Compile Include="operate\GoatColor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatColor.resx</DependentUpon>
+    </Compile>
     <Compile Include="operate\GoatMirrorUtil.cs" />
     <Compile Include="operate\GoatMirror.cs" />
     <Compile Include="operate\GoatMirror.Designer.cs">
@@ -265,6 +272,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="operate\GoatDelete.resx">
       <DependentUpon>GoatDelete.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="operate\GoatColor.resx">
+      <DependentUpon>GoatColor.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>
