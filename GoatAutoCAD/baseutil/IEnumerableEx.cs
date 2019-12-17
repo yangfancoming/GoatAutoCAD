@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Autodesk.AutoCAD.DatabaseServices;
 
 namespace GoatAutoCAD.baseutil {
 
@@ -16,6 +17,21 @@ namespace GoatAutoCAD.baseutil {
                 action(element);
             }
         }
+
+
+        /// <summary>
+        /// Opens object for write.
+        /// </summary>
+        /// <typeparam name="T">The type of object.</typeparam>
+        /// <param name="id">The object ID.</param>
+        /// <param name="action">The action.</param>
+        public static void QOpenForWrite<T>(this ObjectId id, Action<T> action) where T : DBObject  {
+            using (var trans = id.Database.TransactionManager.StartTransaction()) {
+                action(trans.GetObject(id, OpenMode.ForWrite) as T);
+                trans.Commit();
+            }
+        }
+
 
     }
 }

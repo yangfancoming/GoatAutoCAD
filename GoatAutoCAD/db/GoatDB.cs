@@ -15,18 +15,7 @@ namespace GoatAutoCAD.db
         public static Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
 
 
-        /// <summary>
-        /// Opens object for write.
-        /// </summary>
-        /// <typeparam name="T">The type of object.</typeparam>
-        /// <param name="id">The object ID.</param>
-        /// <param name="action">The action.</param>
-        public static void QOpenForWrite<T>(this ObjectId id, Action<T> action) where T : DBObject  {
-            using (var trans = id.Database.TransactionManager.StartTransaction()) {
-                action(trans.GetObject(id, OpenMode.ForWrite) as T);
-                trans.Commit();
-            }
-        }
+
 
         public static Entity getEntityById(this ObjectId objectId) {
             Entity entity;

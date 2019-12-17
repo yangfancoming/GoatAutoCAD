@@ -51,7 +51,7 @@ namespace GoatAutoCAD.operate {
         /// 删除用户选择的实体对象
         /// </summary>
         public static void deleteBySelect(){
-            Entity ent = GoatSelectorUtil.select("\n 选择要删除的对象");
+            Entity ent = GoatPickUtill.selectEntity("\n 选择要删除的对象");
             deleteByEntity(ent);
         }
     }

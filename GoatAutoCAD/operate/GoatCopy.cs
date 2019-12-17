@@ -18,7 +18,7 @@ namespace GoatAutoCAD
         {
             Point3d sourcePt = new Point3d(0,0,0);
             Point3d targetPt = new Point3d(100,100,0);
-            Entity ent = GoatSelectorUtil.select("\n 选择要删除的对象");
+            Entity ent = GoatPickUtill.selectEntity("\n 选择要删除的对象");
             GoatCopyUtil.copyById(ent.Id,sourcePt,targetPt);
         }
 

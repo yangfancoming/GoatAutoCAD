@@ -7,18 +7,7 @@ namespace GoatAutoCAD.selector
 {
     public class GoatSelectorUtil : BaseData{
 
-        /// <summary>
-        /// 提示用户选择单个实体
-        /// </summary>
-        /// <param name="msg">选择提示</param>
-        /// <returns>实体对象</returns>
-        public static Entity select(string msg){
-            PromptEntityResult ent = ed.GetEntity(msg);
-            if (ent.Status == PromptStatus.OK) {
-                return ent.ObjectId.getEntityById();
-            }
-            return null;
-        }
+
 
         /// <summary>
         ///     选择集

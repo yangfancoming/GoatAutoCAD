@@ -35,7 +35,7 @@ namespace GoatAutoCAD.operate
 
         public static void mirrorBySelect(Point3d basePt,Point3d targetPt)
         {
-            Entity ent = GoatSelectorUtil.select("\n 选择要镜像的对象");
+            Entity ent = GoatPickUtill.selectEntity("\n 选择要镜像的对象");
             mirrorByEntity(ent,basePt,targetPt);
         }
 
