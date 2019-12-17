@@ -5,7 +5,7 @@ using Autodesk.AutoCAD.Geometry;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
 using GoatAutoCAD.baseutil;
-using GoatAutoCAD.constant;
+using GoatAutoCAD.operate;
 using GoatAutoCAD.selector;
 
 [assembly: CommandClass(typeof(GoatMirror))]
