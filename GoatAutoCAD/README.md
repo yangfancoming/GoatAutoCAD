@@ -31,13 +31,9 @@
 
     9)视图表(ViewTable)
 
-#
-Application
-    DocumentManager
 
-# Application 对象层次 ： 通过 Application 对象，用户可以访问主窗口以及任何打开的图形。
 
-     DocumentManager ： 该对象提供对AutoCAD中当前图形的访问并允许用户并允许用户创建、保存和打开图形文件。包含所有的document对象（每一个打开的图形都有一个对应的document对象）
+# Application 对象层次
 
      Document WindowCollection： 包括所有的document窗口对象（再 documentManger中每一个document对象都有一个document窗口）
 
@@ -53,29 +49,40 @@ Application
 
      Publisher 包含 Publisher 对象的引用，它用于发布图形
 
-     StatusBar： 包含应用程序窗口的状态对象的引用
 
-     User configuration  包含UserConfiguration对象的引用，他允许用户保存个人配置
-
-#
-    Application
-        DocumentManager
-            Document
-                Database
-                Editor
-                GraphicsManager
-                StatusBar
-                TransactionManager
-                User Data
-                Window
-
-
-    Application
-        DocumentManager
+    Application ： 通过 Application 对象，用户可以访问主窗口以及任何打开的图形。
+        DocumentManager ： 该对象提供对AutoCAD中当前图形的访问并允许用户并允许用户创建、保存和打开图形文件。包含所有的document对象（每一个打开的图形都有一个对应的document对象）
+            Database
+            Editor
+            GraphicsManager
+            StatusBar  ： 包含应用程序窗口的状态对象的引用
+            TransactionManager
+            User Data ：包含UserConfiguration对象的引用，他允许用户保存个人配置
+            Window
             Document
                  Database
-         NameDictionaries               Tables
+                 
+                     NameDictionaries (命名字典)
+                        layout Dic 
+                      
+                     Tables (符号表)      
+                        Block Table  ：存储图形数据库中定义的块。此表中含有两个非常重要的记录：模型空间和图纸空间。
+                            BlockTableRecord
+                                Entity
+                         Dimension Style Table ：存储尺寸标注样式
+                         Layer Table ： 存储图层
+                         Linetype Table：存储线型
+                         RegApp Table：存储为图形数据库中对象的扩展实体数据而注册的应用程序名
+                         Text Style Table：存储文字样式
+                         UCS Table：存储用户保存的用户坐标系
+                         View Table：存储与命令view相关的视图
+                         Viewport Table：存储当系统变量Tilemode值为1时的视口配置，该配置由命令vports创建。
+                            
+                        
+                                
+                              
+                                        
 
-         layout Dic  Other Dic      Block Table   Other Table
-                                    BlockTableRecord   TableRecord
-                                    Entity
+               
+                                   
+                                    
