@@ -1,8 +1,24 @@
+using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.Geometry;
 using GoatAutoCAD.baseutil;
 
 // 被优化了  优化代码  在 constant 类中
 namespace GoatAutoCAD.operate {
-    public class GoatMirrorUtil : BaseData {
+    public static class GoatMirrorUtil {
+
+        /**
+
+        public static readonly Action<Entity, Line3d> actionMirrorByLine = (entity,line3d) => {
+            Matrix3d mt = Matrix3d.Mirroring(line3d);
+            entity.TransformBy(mt);
+        };
+
+        */
+        public static void mirrorByLine3d(this Entity entity, Line3d line3d) {
+            Matrix3d mt = Matrix3d.Mirroring(line3d);
+            entity.TransformBy(mt);
+        }
+
 //
 //        public static void mirrorById(ObjectId id,Line3d line3d) {
 //            using (Transaction trans = db.TransactionManager.StartTransaction()) {
