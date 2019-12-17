@@ -47,7 +47,7 @@ namespace GoatAutoCAD
         [CommandMethod("MyGroup", "pickInteger", "pickInteger", CommandFlags.Modal)]
         public void pickInteger(){
             int pt = InteractionUtil.pickInteger("\n 请输入整数：");
-            BaseData.ed.WriteMessage("\n 输入的整数:({0})" ,pt);
+            GoatMessageUtil.msg("\n 输入的整数:({0})" ,pt);
         }
 
     }

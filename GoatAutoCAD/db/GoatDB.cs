@@ -1,12 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
+using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.EditorInput;
 using GoatAutoCAD.baseutil;
 
 namespace GoatAutoCAD.db
 {
-    public class GoatDB : BaseData {
+    public static class GoatDB  {
 
+        public static Database db = Application.DocumentManager.MdiActiveDocument.Database;
+        public static Document doc = Application.DocumentManager.MdiActiveDocument;
+        public static Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
 
         public static Entity getEntityById(ObjectId objectId) {
             Entity entity;
@@ -32,7 +37,7 @@ namespace GoatAutoCAD.db
             return id;
         }
 
-        public static ObjectId AddToModelSpace(Entity ent){
+        public static ObjectId AddToModelSpace(this Entity ent){
             ObjectId id = new ObjectId();
             using (Transaction trans = db.TransactionManager.StartTransaction()){
                 //③ 以读方式打开图形数据库的块表 ： 默认有 模型空间、布局1、布局2
@@ -47,7 +52,7 @@ namespace GoatAutoCAD.db
             return id;
         }
 
-        public static IEnumerable<ObjectId> AddToModelSpace(IEnumerable<Entity> ents) {
+        public static IEnumerable<ObjectId> AddToModelSpace(this IEnumerable<Entity> ents) {
             List<ObjectId> list = new List<ObjectId>(ents.Count());
             using (Transaction trans = db.TransactionManager.StartTransaction()) {
                 //③ 以读方式打开图形数据库的块表 ： 默认有 模型空间、布局1、布局2
