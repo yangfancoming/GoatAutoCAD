@@ -67,7 +67,7 @@
                       
                      Tables (符号表)      
                         Block Table  ：存储图形数据库中定义的块。此表中含有两个非常重要的记录：模型空间和图纸空间。
-                            BlockTableRecord
+                            BlockTableRecord ： 模型空间、布局空间1、布局空间2
                                 Entity
                          Dimension Style Table ：存储尺寸标注样式
                          Layer Table ： 存储图层

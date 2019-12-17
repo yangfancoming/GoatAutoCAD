@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="baseutil\BaseData.cs" />
+    <Compile Include="baseutil\IEnumerableEx.cs" />
     <Compile Include="block\GoatBlock.cs" />
     <Compile Include="block\GoatBlock.Designer.cs">
       <AutoGen>True</AutoGen>
