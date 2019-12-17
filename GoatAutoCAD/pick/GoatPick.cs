@@ -12,23 +12,23 @@ namespace GoatAutoCAD
 {
 
     public class GoatPic{
-        [CommandMethod("MyGroup", "pick1", "pick1", CommandFlags.Modal)]
-        public void pick1(){
+
+        // 命令行获取 用户拾取点
+        [CommandMethod("MyGroup", "pickPoint1", "pickPoint1", CommandFlags.Modal)]
+        public void pickPoint1(){
             Point3d pt = PickUtill.pickPoint("\n 选择对象");
             BaseData.ed.WriteMessage("\n 拾取的点坐标为:({0},{1},{2})" ,pt.X,pt.Y,pt.Z);
         }
 
-
-        [CommandMethod("MyGroup", "pick2", "pick2", CommandFlags.Modal)]
-        public void pick2(){
-            DocumentLock doclock = BaseData.doc.LockDocument();
-            //操作过程
+        // 对话框获取 用户拾取点
+        [CommandMethod("MyGroup", "pickPoint2", "pickPoint2", CommandFlags.Modal)]
+        public void pickPoint2(){
+            // 打开对话框窗体
             using (GoatForm form = new GoatForm()){
                 Application.ShowModalDialog(form);
                 //点击“确定”按钮命令行显示窗体文本框中的信息
                 BaseData.ed.WriteMessage(form._textBox.Text);
             }
-            doclock.Dispose();
         }
 
 

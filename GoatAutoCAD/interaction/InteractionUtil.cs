@@ -55,6 +55,27 @@ namespace GoatAutoCAD.interaction  {
             return null;
         }
 
+        /// <summary> ed.GetDouble(new PromptDoubleOptions(message) { AllowNone = true })
+        /// 提示用户输入整数
+        /// </summary>
+        /// <param name="msg">提示</param>
+        /// <returns>返回Point3d</returns>
+        /// <summary>
+        public static int pickInteger(string msg){
+            PromptIntegerOptions options = new PromptIntegerOptions(msg){ AllowNone = false };
+            PromptIntegerResult pt = GoatDB.ed.GetInteger(options);
+            if (pt.Status == PromptStatus.OK){
+                return pt.Value;
+            }
+            return 0;
+        }
+
+
+
+
+
+
+
         /// <summary>
         /// For each loop.
         /// </summary>

@@ -5,6 +5,7 @@ using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
+using GoatAutoCAD.baseutil;
 using GoatAutoCAD.interaction;
 using GoatAutoCAD.operate;
 using GoatAutoCAD.selector;
@@ -40,6 +41,13 @@ namespace GoatAutoCAD
             string[] keys = { "A", "B", "C", "D" };
             var key = InteractionUtil.GetKeywords("\nChoose an option", keys, 3);
             GoatMessageUtil.msg("You chose {0}.", key);
+        }
+
+        // 获取用户输入整数
+        [CommandMethod("MyGroup", "pickInteger", "pickInteger", CommandFlags.Modal)]
+        public void pickInteger(){
+            int pt = InteractionUtil.pickInteger("\n 请输入整数：");
+            BaseData.ed.WriteMessage("\n 输入的整数:({0})" ,pt);
         }
 
     }
