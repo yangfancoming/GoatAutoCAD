@@ -32,6 +32,5 @@ namespace GoatAutoCAD.baseutil {
             }
         }
 
-
     }
 }

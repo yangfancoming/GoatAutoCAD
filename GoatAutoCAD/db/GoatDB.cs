@@ -14,9 +14,6 @@ namespace GoatAutoCAD.db
         public static Document doc = Application.DocumentManager.MdiActiveDocument;
         public static Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
 
-
-
-
         public static Entity getEntityById(this ObjectId objectId) {
             Entity entity;
             using (Transaction transaction = db.TransactionManager.StartTransaction()){
