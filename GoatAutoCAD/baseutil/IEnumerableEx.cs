@@ -20,6 +20,7 @@ namespace GoatAutoCAD.baseutil {
         }
 
 
+        // sos 注意： 操作对象 必须要 再 using 代码块中 并且 通过GetObject获取后  才能操作成功！ 否则报错：内部错误 eNotOpenForWrite
         public static void QOpenForWrite<T>(this ObjectId id, Action<T> action) where T : DBObject  {
             using (var trans = id.Database.TransactionManager.StartTransaction()) {
                 action(trans.GetObject(id, OpenMode.ForWrite) as T);
@@ -41,5 +42,16 @@ namespace GoatAutoCAD.baseutil {
                 trans.Commit();
             }
         }
+
+
+
+        public static void QOpenForWrite<T>(this ObjectId id, Vector3d vector3d,Action<T,Vector3d> action) where T : DBObject  {
+            using (var trans = id.Database.TransactionManager.StartTransaction()) {
+                action(trans.GetObject(id, OpenMode.ForWrite) as T,vector3d);
+                trans.Commit();
+            }
+        }
+
+
     }
 }
