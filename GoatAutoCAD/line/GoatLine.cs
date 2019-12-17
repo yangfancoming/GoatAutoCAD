@@ -15,7 +15,7 @@ namespace GoatAutoCAD{
         [CommandMethod("MyGroup", "goatLine", "goatLine", CommandFlags.Modal)]
         public void goatLine() {
             Line line = new Line(new Point3d(0, 0, 0),new Point3d(100, 100, 0));
-            ObjectId id = GoatDB.AddToModelSpace(line);
+            ObjectId id = line.AddToModelSpace();
             GoatDB.ed.WriteMessage("Hello, this is your first command." + id);
         }
 
@@ -26,7 +26,7 @@ namespace GoatAutoCAD{
             List<Entity> list = new List<Entity>();
             list.Add(line1);
             list.Add(line2);
-            IEnumerable<ObjectId> ids = GoatDB.AddToModelSpace(list);
+            IEnumerable<ObjectId> ids = list.AddToModelSpace();
             ids.ForEach(x=> GoatDB.ed.WriteMessage("Hello" + x));
         }
 

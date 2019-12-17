@@ -8,17 +8,14 @@ using GoatAutoCAD.db;
 using GoatAutoCAD.operate;
 
 [assembly: CommandClass(typeof(GoatCircle))]
-namespace GoatAutoCAD
-{
+namespace GoatAutoCAD {
 
-    public class GoatCircle
-    {
+    public class GoatCircle {
 
         [CommandMethod("MyGroup", "circle1", "circle1", CommandFlags.Modal)]
-        public void circle1()
-        {
+        public void circle1() {
             Circle circle = GoatCircleUtil.Circle(new Point3d(0, 0, 0),10);
-            GoatDB.AddToModelSpace(circle);
+            circle.AddToModelSpace();
         }
 
     }
