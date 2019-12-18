@@ -75,5 +75,15 @@ namespace GoatAutoCAD.interaction  {
             GoatDB.ed.SetImpliedSelection(entityIds);
         }
 
+
+        public static string GetString(string message) {
+            var res = GoatDB.ed.GetString(message);
+            if (res.Status == PromptStatus.OK){
+                return res.StringResult;
+            }
+            return null;
+        }
+
+
     }
 }

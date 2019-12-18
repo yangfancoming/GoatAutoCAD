@@ -33,7 +33,7 @@ namespace GoatAutoCAD {
         }
 
 
-        //  显示模态对话框
+        //  显示模态对话框 自动选择指定层的实体对象
         [CommandMethod("MyGroup", "layer4", "layer4", CommandFlags.Modal)]
         public void layer4() {
             DocumentLock doclock = BaseData.doc.LockDocument();

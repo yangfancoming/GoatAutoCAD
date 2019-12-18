@@ -58,6 +58,26 @@ namespace GoatAutoCAD.db {
             return id;
         }
 
+        /// <summary>
+        /// Adds an entity to current space.
+        /// </summary>
+        /// <param name="entity">The entity to add.</param>
+        /// <param name="db">The database.</param>
+        /// <returns>The objected IDs.</returns>
+        /// 空合并运算符(??)：
+        /// 用于定义可空类型和引用类型的默认值。如果此运算符的左操作数不为null，则此运算符将返回左操作数，否则返回右操作数。
+        /// 例如：a??b 当a为null时则返回b，a不为null时则返回a本身。
+        public static ObjectId AddToCurrentSpace(this Entity entity){
+            using (var trans = db.TransactionManager.StartTransaction()) {
+                var currentSpace = trans.GetObject(db.CurrentSpaceId, OpenMode.ForWrite, false) as BlockTableRecord;
+                var id = currentSpace.AppendEntity(entity);
+                trans.AddNewlyCreatedDBObject(entity, true);
+                trans.Commit();
+                return id;
+            }
+        }
+
+
         public static ObjectId AddToModelSpace(this Entity ent){
             ObjectId id = new ObjectId();
             using (Transaction trans = db.TransactionManager.StartTransaction()){

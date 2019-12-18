@@ -229,6 +229,13 @@
       <DependentUpon>GoatPick.resx</DependentUpon>
     </Compile>
     <Compile Include="pick\GoatPickUtill.cs" />
+    <Compile Include="polyline\GoatPolylineUtil.cs" />
+    <Compile Include="polyline\GoatPolyline.cs" />
+    <Compile Include="polyline\GoatPolyline.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatPolyline.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="selector\GoatSelect.cs" />
     <Compile Include="selector\GoatSelect.Designer.cs">
@@ -237,6 +244,12 @@
       <DependentUpon>GoatSelect.resx</DependentUpon>
     </Compile>
     <Compile Include="selector\GoatSelectorUtil.cs" />
+    <Compile Include="temp\Temp.cs" />
+    <Compile Include="temp\Temp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Temp.resx</DependentUpon>
+    </Compile>
     <Compile Include="text\GoatText.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -336,8 +349,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="polyline\GoatPolyline.resx">
+      <DependentUpon>GoatPolyline.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GoatPolyline.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="selector\GoatSelect.resx">
       <DependentUpon>GoatSelect.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="temp\Temp.resx">
+      <DependentUpon>Temp.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>
