@@ -180,6 +180,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GoatColor.resx</DependentUpon>
     </Compile>
+    <Compile Include="operate\GoatScaleUtil.cs" />
+    <Compile Include="operate\GoatScale.cs" />
+    <Compile Include="operate\GoatScale.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatScale.resx</DependentUpon>
+    </Compile>
     <Compile Include="operate\GoatRotate.cs" />
     <Compile Include="operate\GoatRotate.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -285,6 +292,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="operate\GoatColor.resx">
       <DependentUpon>GoatColor.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="operate\GoatScale.resx">
+      <DependentUpon>GoatScale.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>
