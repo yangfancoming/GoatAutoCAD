@@ -5,8 +5,8 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using GoatAutoCAD.baseutil;
 
-namespace GoatAutoCAD.db
-{
+namespace GoatAutoCAD.db {
+
     public static class GoatDB  {
 
         public static Database db = Application.DocumentManager.MdiActiveDocument.Database;
@@ -18,14 +18,22 @@ namespace GoatAutoCAD.db
             return GetSymbolTableRecordNames((db ?? GoatDB.db).LayerTableId);
         }
 
+        public static string[] GetSymbolTableRecordNames(ObjectId symbolTableId) {
+            return
+                // 通过符号表id获取符号表所有记录的id
+                GetSymbolTableRecords(symbolTableId)
+                // 通过符号表所有记录的id  从数据库中获取对应的实体
+                .QOpenForRead<SymbolTableRecord>()
+                // 投影实体集合集合中的 Name属性
+                .Select(record => record.Name).ToArray();
+        }
+
         public static Database GetDatabase(IEnumerable<ObjectId> objectIds) {
             return objectIds.Select(id => id.Database).Distinct().Single();
         }
 
-        public static string[] GetSymbolTableRecordNames(ObjectId symbolTableId) {
-            return GetSymbolTableRecords(symbolTableId).QOpenForRead<SymbolTableRecord>().Select(record => record.Name).ToArray();
-        }
 
+        // 通过符号表id获取符号表所有记录的id
         public static ObjectId[] GetSymbolTableRecords(ObjectId symbolTableId){
             using (var trans = symbolTableId.Database.TransactionManager.StartTransaction()){
                 SymbolTable table = trans.GetObject(symbolTableId, OpenMode.ForRead) as SymbolTable;

@@ -29,12 +29,6 @@ namespace GoatAutoCAD.baseutil {
             }
         }
 
-        public static Entity GetEntityFromDB(this ObjectId id) {
-            using (var trans = id.Database.TransactionManager.StartTransaction()) {
-               return trans.GetObject(id, OpenMode.ForWrite) as Entity;
-            }
-        }
-
 
         public static T[] QOpenForRead<T>(this IEnumerable<ObjectId> ids)  where T : DBObject  {
             using (var trans = GoatDB.GetDatabase(ids).TransactionManager.StartTransaction()) {
@@ -42,6 +36,12 @@ namespace GoatAutoCAD.baseutil {
             }
         }
 
+
+        public static T QOpenForRead<T>(this ObjectId id) where T : DBObject  {// newly 20130122
+            using (var trans = id.Database.TransactionManager.StartOpenCloseTransaction()){
+                return trans.GetObject(id, OpenMode.ForRead) as T;
+            }
+        }
 
 
     }

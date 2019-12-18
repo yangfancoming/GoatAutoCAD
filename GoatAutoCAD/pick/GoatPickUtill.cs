@@ -5,10 +5,9 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Geometry;
 using GoatAutoCAD.baseutil;
-using GoatAutoCAD.db;
 
-namespace GoatAutoCAD.selector
-{
+namespace GoatAutoCAD.selector {
+
     public class GoatPickUtill : BaseData {
         /// <summary>
         /// 提示用户拾取点
@@ -34,7 +33,7 @@ namespace GoatAutoCAD.selector
         public static Entity GetEntity(string msg){
             PromptEntityResult ent = ed.GetEntity(msg);
             if (ent.Status == PromptStatus.OK) {
-                return ent.ObjectId.GetEntityFromDB();
+                return ent.ObjectId.QOpenForRead<Entity>();
             }
             return null;
         }
