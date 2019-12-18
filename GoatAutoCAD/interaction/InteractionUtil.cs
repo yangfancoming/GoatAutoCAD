@@ -71,18 +71,9 @@ namespace GoatAutoCAD.interaction  {
             return 0;
         }
 
-
-
-        /// <summary>
-        /// Sets the pick set.
-        /// </summary>
-        /// <param name="entityIds">The entity IDs.</param>
         public static void SetPickSet(ObjectId[] entityIds) {
             GoatDB.ed.SetImpliedSelection(entityIds);
         }
-
-
-
 
     }
 }

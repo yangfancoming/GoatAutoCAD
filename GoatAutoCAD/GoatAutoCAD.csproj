@@ -128,7 +128,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GoatEvent.resx</DependentUpon>
     </Compile>
-    <Compile Include="form\Gui.cs" />
+    <Compile Include="form\SelectByLayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\SelectByLayer.Designer.cs">
+      <DependentUpon>SelectByLayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="GoatForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +264,9 @@
       <DependentUpon>GoatEvent.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\SelectByLayer.resx">
+      <DependentUpon>SelectByLayer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GoatForm.resx">
       <DependentUpon>GoatForm.cs</DependentUpon>

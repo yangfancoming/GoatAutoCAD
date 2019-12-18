@@ -1,13 +1,12 @@
 ﻿
 
-using System.Linq;
+using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
 using GoatAutoCAD.baseutil;
 using GoatAutoCAD.db;
 using GoatAutoCAD.form;
-using GoatAutoCAD.interaction;
 using GoatAutoCAD.operate;
 
 [assembly: CommandClass(typeof(GoatLayer))]
@@ -33,20 +32,18 @@ namespace GoatAutoCAD {
             allLayerNames.ForEach(GoatMessageUtil.msg);
         }
 
-        //
-        [CommandMethod("MyGroup", "layer3", "layer3", CommandFlags.Modal)]
-        public void layer3() {
-            string[] availableLayerNames = GoatDB.GetAllLayerNames();
-            string[] selectedLayerNames = Gui.GetChoices("Specify layers", availableLayerNames);
-            if (selectedLayerNames.Length < 1){
-                return;
+
+        //  显示模态对话框
+        [CommandMethod("MyGroup", "layer4", "layer4", CommandFlags.Modal)]
+        public void layer4() {
+            DocumentLock doclock = BaseData.doc.LockDocument();
+            //操作过程
+            using (SelectByLayer form = new SelectByLayer()) {
+                Application.ShowModalDialog(form);
             }
-
-            FilterList filterList = FilterList.Create().Layer(selectedLayerNames);
-
-            var ids = QuickSelection.SelectAll(filterList).ToArray();
-            InteractionUtil.SetPickSet(ids);
+            doclock.Dispose();
         }
+
 
     }
 

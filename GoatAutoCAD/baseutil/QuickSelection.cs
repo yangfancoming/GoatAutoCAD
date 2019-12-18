@@ -16,7 +16,7 @@ namespace GoatAutoCAD.baseutil {
         /// <returns>The object IDs.</returns>
         public static ObjectId[] SelectAll(TypedValue[] filterList) {
             var ed = GoatDB.ed;
-            var selRes = filterList != null && filterList.Any() ? ed.SelectAll(new SelectionFilter(filterList))  : ed.SelectAll();
+            var selRes = filterList != null && filterList.Any() ? ed.SelectAll(new SelectionFilter(filterList)) : ed.SelectAll();
             if (selRes.Status == PromptStatus.OK){
                 return selRes.Value.GetObjectIds();
             }

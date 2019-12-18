@@ -3,16 +3,11 @@ using Autodesk.AutoCAD.DatabaseServices;
 
 namespace GoatAutoCAD.baseutil {
 
-
     public class FilterList {
+
         private readonly List<TypedValue> Cache = new List<TypedValue>();
 
-        /// <summary>
-        /// Creates a new filter list.
-        /// </summary>
-        /// <returns>The result.</returns>
-        public static FilterList Create()
-        {
+        public static FilterList Create() {
             return new FilterList();
         }
 
@@ -20,9 +15,8 @@ namespace GoatAutoCAD.baseutil {
         /// Gets the TypedValue array representation.
         /// </summary>
         /// <returns>The array.</returns>
-        public TypedValue[] ToArray()
-        {
-            return this.Cache.ToArray();
+        public TypedValue[] ToArray() {
+            return Cache.ToArray();
         }
 
         /// <summary>
@@ -32,7 +26,7 @@ namespace GoatAutoCAD.baseutil {
         /// <returns>The helper.</returns>
         public FilterList DxfType(params string[] dxfTypes)
         {
-            this.Cache.Add(new TypedValue((int)DxfCode.Start, string.Join(",", dxfTypes)));
+            Cache.Add(new TypedValue((int)DxfCode.Start, string.Join(",", dxfTypes)));
             return this;
         }
 
@@ -41,9 +35,8 @@ namespace GoatAutoCAD.baseutil {
         /// </summary>
         /// <param name="layers">The layers.</param>
         /// <returns>The helper.</returns>
-        public FilterList Layer(params string[] layers)
-        {
-            this.Cache.Add(new TypedValue((int)DxfCode.LayerName, string.Join(",", layers)));
+        public FilterList Layer(string[] layers){
+            Cache.Add(new TypedValue((int)DxfCode.LayerName, string.Join(",", layers)));
             return this;
         }
 

@@ -30,6 +30,8 @@ namespace GoatAutoCAD {
             Application.ShowModelessDialog(form);
             doclock.Dispose();
         }
+
+
     }
 
 }
