@@ -14,7 +14,7 @@ namespace GoatAutoCAD {
 
         [CommandMethod("MyGroup", "select1", "select1", CommandFlags.Modal)]
         public void msg1() {
-            Entity ent = GoatPickUtill.selectEntity("\n 选择对象");
+            Entity ent = GoatPickUtill.GetEntity("\n 选择对象");
             BaseData.ed.WriteMessage("\n 你选择的对象ObjectId:"+ent.ObjectId);
         }
 

@@ -16,7 +16,7 @@ namespace GoatAutoCAD{
         [CommandMethod("MyGroup", "scale1", "scale1", CommandFlags.Modal)]
         public void scale1(){
             Point3d center = new Point3d(0,0,0);
-            ObjectId objectId = GoatPickUtill.selectEntityId("\n 选择要移动的对象");
+            ObjectId objectId = GoatPickUtill.GetEntityId("\n 选择要移动的对象");
             objectId.QOpenForWrite(x=>x.scale(center,2));
         }
 

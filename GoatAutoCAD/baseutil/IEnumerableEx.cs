@@ -27,7 +27,11 @@ namespace GoatAutoCAD.baseutil {
             }
         }
 
-
+        public static Entity GetEntityFromDB(this ObjectId id) {
+            using (var trans = id.Database.TransactionManager.StartTransaction()) {
+               return trans.GetObject(id, OpenMode.ForWrite) as Entity;
+            }
+        }
 
 
     }

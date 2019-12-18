@@ -6,6 +6,7 @@ using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
 using GoatAutoCAD.baseutil;
 using GoatAutoCAD.db;
+using GoatAutoCAD.selector;
 
 [assembly: CommandClass(typeof(GoatLine))]
 namespace GoatAutoCAD{
@@ -28,6 +29,13 @@ namespace GoatAutoCAD{
             list.Add(line2);
             IEnumerable<ObjectId> ids = list.AddToModelSpace();
             ids.ForEach(x=> GoatDB.ed.WriteMessage("Hello" + x));
+        }
+
+
+        [CommandMethod("MyGroup", "line1", "line1", CommandFlags.Modal)]
+        public void line1() {
+            var entityId = GoatPickUtill.GetEntityId("\nSpecify a Line", typeof(Line));
+
         }
 
     }
