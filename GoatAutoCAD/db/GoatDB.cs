@@ -14,6 +14,26 @@ namespace GoatAutoCAD.db
         public static Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
 
 
+        public static string[] GetAllLayerNames(Database db = null) {
+            return GetSymbolTableRecordNames((db ?? GoatDB.db).LayerTableId);
+        }
+
+        public static Database GetDatabase(IEnumerable<ObjectId> objectIds) {
+            return objectIds.Select(id => id.Database).Distinct().Single();
+        }
+
+        public static string[] GetSymbolTableRecordNames(ObjectId symbolTableId) {
+            return GetSymbolTableRecords(symbolTableId).QOpenForRead<SymbolTableRecord>().Select(record => record.Name).ToArray();
+        }
+
+        public static ObjectId[] GetSymbolTableRecords(ObjectId symbolTableId){
+            using (var trans = symbolTableId.Database.TransactionManager.StartTransaction()){
+                SymbolTable table = trans.GetObject(symbolTableId, OpenMode.ForRead) as SymbolTable;
+                return table.Cast<ObjectId>().ToArray();
+            }
+        }
+
+
         /// <summary>
         /// 将块表记录加入到块表中
         /// </summary>

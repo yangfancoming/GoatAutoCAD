@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Autodesk.AutoCAD.DatabaseServices;
+using GoatAutoCAD.db;
 
 namespace GoatAutoCAD.baseutil {
 
@@ -32,6 +34,14 @@ namespace GoatAutoCAD.baseutil {
                return trans.GetObject(id, OpenMode.ForWrite) as Entity;
             }
         }
+
+
+        public static T[] QOpenForRead<T>(this IEnumerable<ObjectId> ids)  where T : DBObject  {
+            using (var trans = GoatDB.GetDatabase(ids).TransactionManager.StartTransaction()) {
+                return ids.Select(id => trans.GetObject(id, OpenMode.ForRead) as T).ToArray();
+            }
+        }
+
 
 
     }
