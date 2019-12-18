@@ -1,10 +1,13 @@
 ﻿
 
+using System.Linq;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
 using GoatAutoCAD.baseutil;
 using GoatAutoCAD.db;
+using GoatAutoCAD.form;
+using GoatAutoCAD.interaction;
 using GoatAutoCAD.operate;
 
 [assembly: CommandClass(typeof(GoatLayer))]
@@ -30,6 +33,20 @@ namespace GoatAutoCAD {
             allLayerNames.ForEach(GoatMessageUtil.msg);
         }
 
+        //
+        [CommandMethod("MyGroup", "layer3", "layer3", CommandFlags.Modal)]
+        public void layer3() {
+            string[] availableLayerNames = GoatDB.GetAllLayerNames();
+            string[] selectedLayerNames = Gui.GetChoices("Specify layers", availableLayerNames);
+            if (selectedLayerNames.Length < 1){
+                return;
+            }
+
+            FilterList filterList = FilterList.Create().Layer(selectedLayerNames);
+
+            var ids = QuickSelection.SelectAll(filterList).ToArray();
+            InteractionUtil.SetPickSet(ids);
+        }
 
     }
 

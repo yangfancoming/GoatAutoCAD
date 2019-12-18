@@ -91,7 +91,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="baseutil\BaseData.cs" />
+    <Compile Include="baseutil\FilterList.cs" />
     <Compile Include="baseutil\IEnumerableEx.cs" />
+    <Compile Include="baseutil\QuickSelection.cs" />
     <Compile Include="block\GoatBlock.cs" />
     <Compile Include="block\GoatBlock.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -126,6 +128,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GoatEvent.resx</DependentUpon>
     </Compile>
+    <Compile Include="form\Gui.cs" />
     <Compile Include="GoatForm.cs">
       <SubType>Form</SubType>
     </Compile>

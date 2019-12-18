@@ -14,6 +14,7 @@ namespace GoatAutoCAD.db {
         public static Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
 
 
+        // 获取所有图层名称
         public static string[] GetAllLayerNames(Database db = null) {
             return GetSymbolTableRecordNames((db ?? GoatDB.db).LayerTableId);
         }

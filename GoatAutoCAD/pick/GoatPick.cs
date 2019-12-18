@@ -27,7 +27,7 @@ namespace GoatAutoCAD
             using (GoatForm form = new GoatForm()){
                 Application.ShowModalDialog(form);
                 //点击“确定”按钮命令行显示窗体文本框中的信息
-                BaseData.ed.WriteMessage(form._textBox.Text);
+                BaseData.ed.WriteMessage(form.Text);
             }
         }
 
