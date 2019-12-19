@@ -1,61 +1,63 @@
+﻿
+
+using System;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
+using Autodesk.AutoCAD.Runtime;
+using GoatAutoCAD;
+using GoatAutoCAD.db;
 
-namespace GoatAutoCAD.text
-{
-    public class GoatText
-    {
-        /// <summary>
-        /// 由插入点、文字内容、文字样式、文字高度创建单行文字
-        /// </summary>
-        /// <param name="textString">文字内容</param>
-        /// <param name="position">基点</param>
-        /// <param name="height">文字高度</param>
-        /// <param name="rot">文字转角</param>
-        /// <param name="isfield">是否是包含域</param>
-        /// <returns></returns>
-        public static DBText DBText(string textString, Point3d position, double height, double rot, bool isfield)
-        {
-            DBText txt = new DBText();
-            txt.Position = position;
-            txt.Height = height;
-            txt.Rotation = rot;
-            if (isfield)
-            {
-                Field field = new Field(textString);
-                txt.SetField(field);
-            }
-            else
-                txt.TextString = textString;
+[assembly: CommandClass(typeof(GoatText))]
+namespace GoatAutoCAD {
 
-            return txt;
+    public class GoatText {
+
+
+        // 单行文字
+        [CommandMethod("MyGroup", "text1", "text1", CommandFlags.Modal)]
+        public void text1() {
+            DBText dbText = new DBText();
+            // 文字内容
+            dbText.TextString = "我是单行文字~";
+            // 文字高度
+            dbText.Height = 100;
+            // 插入点
+            dbText.Position = Point3d.Origin;
+            // 旋转角度
+            dbText.Rotation = Math.PI * 0.1;
+            // 是否在 X/Y 轴 镜像
+            dbText.IsMirroredInX = false;
+            dbText.IsMirroredInY = false;
+            // 水平对齐模式
+            dbText.HorizontalMode = TextHorizontalMode.TextCenter;
+            // 垂直对齐模式
+            dbText.VerticalMode = TextVerticalMode.TextTop;
+            // 对齐点
+            dbText.AlignmentPoint = dbText.Position;
+            dbText.AddToCurrentSpace();
         }
 
-        /// <summary>
-        /// 由插入点、文字内容、文字样式、文字高度、文字宽度创建多行文字
-        /// </summary>
-        /// <param name="textString">文字内容</param>
-        /// <param name="location">基点</param>
-        /// <param name="height">文字高度</param>
-        /// <param name="width">宽度</param>
-        /// <param name="rot">文字转角</param>
-        /// <param name="isfield">是否是包含域</param>
-        /// <returns></returns>
-        public static MText Mtext(string textString,Point3d location, double height, double width,double rot,bool isfield)
-        {
-            MText txt = new MText();
-            txt.Location = location;
-            txt.TextHeight = height;
-            txt.Width = width;
-            txt.Rotation = rot;
-            if (isfield)
-            {
-                Field field = new Field(textString);
-                txt.SetField(field);
-            }
-            else
-                txt.Contents = textString;
-            return txt;
+
+        // 多行文字
+        [CommandMethod("MyGroup", "text2", "text2", CommandFlags.Modal)]
+        public void text2() {
+            MText mText = new MText();
+            // 文字框内容
+            mText.Contents = "我是多行文字~";
+            // 文字框 高度
+            mText.Height = 100;
+            // 文字高度
+            mText.TextHeight = 200;
+            // 文字框宽度  如果文字超过该宽度则自动换行
+            mText.Width = 50;
+            // 插入点
+            mText.Location = new Point3d(100,100,0);
+            // 旋转角度
+            mText.Rotation = Math.PI * 0.25;
+            mText.AddToCurrentSpace();
         }
+
+
     }
+
 }

@@ -266,6 +266,12 @@
       <DependentUpon>Temp.resx</DependentUpon>
     </Compile>
     <Compile Include="text\GoatText.cs" />
+    <Compile Include="text\GoatText.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatText.resx</DependentUpon>
+    </Compile>
+    <Compile Include="text\GoatTextUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="block\GoatBlock.resx">
@@ -386,6 +392,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="temp\Temp.resx">
       <DependentUpon>Temp.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="text\GoatText.resx">
+      <DependentUpon>GoatText.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>
