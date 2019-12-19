@@ -9,7 +9,6 @@ using GoatAutoCAD.baseutil;
 using GoatAutoCAD.constant;
 using GoatAutoCAD.interaction;
 using GoatAutoCAD.operate;
-using GoatAutoCAD.selector;
 
 [assembly: CommandClass(typeof(Temp))]
 namespace GoatAutoCAD {
@@ -20,9 +19,9 @@ namespace GoatAutoCAD {
         [CommandMethod("ShowExtents", CommandFlags.UsePickSet)]
         public static void Temp1() {
             ObjectId[] ids = QuickSelection.GetSelection("\n Select entity");
-            var extents = ids.GetExtents();
+            Extents3d extents = ids.GetExtents();
             // 画出矩形后 返回矩形id
-            var rectId = GoatPolylineUtil.RectangAdd(extents.MinPoint, extents.MaxPoint);
+            ObjectId rectId = GoatPolylineUtil.RectangAdd(extents.MinPoint, extents.MaxPoint);
             InteractionUtil.GetString("\nPress ENTER to reset...");
             // 删除矩形
             rectId.QOpenForWrite(Constant.actionErase);

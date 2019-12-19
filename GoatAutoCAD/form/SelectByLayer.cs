@@ -12,7 +12,6 @@ namespace GoatAutoCAD.form {
             InitializeComponent();
         }
 
-
         // 窗体加载事件
         private void SelectByLayer_Load(object sender, EventArgs e) {
             // 获取所有图层名称

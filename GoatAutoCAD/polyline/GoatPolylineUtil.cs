@@ -36,12 +36,10 @@ namespace GoatAutoCAD.operate {
         /// <param name="globalWidth">The global width. Default is 0.</param>
         /// <returns>The result.</returns>
         public static Polyline Pline(IEnumerable<Point3d> points, double globalWidth = 0) {
-
             return Pline(
                 vertices: points.Select(point => Tuple.Create(point, 0d)).ToList(),
                 globalWidth: globalWidth);
         }
-
 
 
         public static Polyline Pline(List<Tuple<Point3d, double>> vertices, double globalWidth = 0) {
