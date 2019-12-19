@@ -34,6 +34,20 @@ namespace GoatAutoCAD.baseutil {
             }
         }
 
+        public static void QOpenForWrite<T>(this ObjectId id, int colorIndex,Action<T,int> action) where T : DBObject{
+            using (var trans = id.Database.TransactionManager.StartTransaction()){
+                action(trans.GetObject(id, OpenMode.ForWrite) as T,colorIndex);
+                trans.Commit();
+            }
+        }
+        public static void QOpenForWrite<T>(this ObjectId id,short colorIndex, Action<T,short> action) where T : DBObject {
+            using (var trans = id.Database.TransactionManager.StartTransaction()){
+                action(trans.GetObject(id, OpenMode.ForWrite) as T,colorIndex);
+                trans.Commit();
+            }
+        }
+
+
 
         public static T[] QOpenForRead<T>(this IEnumerable<ObjectId> ids)  where T : DBObject  {
             using (var trans = GoatDB.GetDatabase(ids).TransactionManager.StartTransaction()) {

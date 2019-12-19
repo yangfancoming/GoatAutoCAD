@@ -39,20 +39,22 @@ namespace GoatAutoCAD.db {
         }
 
         // 通过名称获取符号表记录
-        public static ObjectId GetSymbolTableRecord(ObjectId symbolTableId, string name, ObjectId? defaultValue = null, Func<SymbolTableRecord> create = null) {
+        public static ObjectId GetSymbolTableRecord(ObjectId symbolTableId, string name, Func<SymbolTableRecord> create = null) {
             using (var trans = symbolTableId.Database.TransactionManager.StartTransaction()) {
                 SymbolTable table = trans.GetObject(symbolTableId, OpenMode.ForRead) as SymbolTable;
+                // 如果图层已经存在 则返回图层
                 if (table.Has(name))  return table[name];
+                // 如果图层不存在 并且 创建标识为true 则创建图层 并返回
                 if (create != null) {
                     SymbolTableRecord record = create();
                     table.UpgradeOpen();
-                    var result = table.Add(record);
+                    ObjectId result = table.Add(record);
                     trans.AddNewlyCreatedDBObject(record, true);
                     trans.Commit();
                     return result;
                 }
             }
-            return defaultValue.Value;
+            return ObjectId.Null;
         }
 
 
@@ -125,26 +127,6 @@ namespace GoatAutoCAD.db {
             return list;
         }
 
-        // 添加 单个 层表
-        public static ObjectId addLayerTableR1ecord(this LayerTableRecord ltr){
-            ObjectId id = new ObjectId();
-            // 获取当前文档和数据库，并启动事务；
-            using (Transaction acTrans = db.TransactionManager.StartTransaction()){
-                // 返回当前数据库的图层表
-                LayerTable acLyrTbl = acTrans.GetObject(db.LayerTableId,OpenMode.ForWrite) as LayerTable;
-                // 检查图层表里是否有图层 MyLayer
-                if (!acLyrTbl.Has(ltr.Name)){
-                    // 以写模式打开图层表
-                    acLyrTbl.UpgradeOpen();
-                    // 添加新的图层表记录到图层表，添加事务
-                    id = acLyrTbl.Add(ltr);
-                    acTrans.AddNewlyCreatedDBObject(ltr, true);
-                    //提交修改
-                    acTrans.Commit();
-                }
-                return id;// 关闭事务，回收内存；
-            }
 
-        }
     }
 }
