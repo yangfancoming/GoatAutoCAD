@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.AutoCAD.ApplicationServices;
@@ -13,11 +14,6 @@ namespace GoatAutoCAD.db {
         public static Document doc = Application.DocumentManager.MdiActiveDocument;
         public static Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
 
-
-        // 获取所有图层名称
-//        public static string[] GetAllLayerNames() {
-//            return GetSymbolTableRecordNames(db.LayerTableId);
-//        }
 
         public static string[] GetSymbolTableRecordNames(ObjectId symbolTableId) {
             return
@@ -41,6 +37,25 @@ namespace GoatAutoCAD.db {
                 return table.Cast<ObjectId>().ToArray();
             }
         }
+
+        // 通过名称获取符号表记录
+        public static ObjectId GetSymbolTableRecord(ObjectId symbolTableId, string name, ObjectId? defaultValue = null, Func<SymbolTableRecord> create = null) {
+            using (var trans = symbolTableId.Database.TransactionManager.StartTransaction()) {
+                SymbolTable table = trans.GetObject(symbolTableId, OpenMode.ForRead) as SymbolTable;
+                if (table.Has(name))  return table[name];
+                if (create != null) {
+                    SymbolTableRecord record = create();
+                    table.UpgradeOpen();
+                    var result = table.Add(record);
+                    trans.AddNewlyCreatedDBObject(record, true);
+                    trans.Commit();
+                    return result;
+                }
+            }
+            return defaultValue.Value;
+        }
+
+
 
 
         /// <summary>

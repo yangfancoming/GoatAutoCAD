@@ -19,7 +19,12 @@ namespace GoatAutoCAD.baseutil {
                 action(element);
             }
         }
-
+        public static void QOpenForWrite<T>(this ObjectId id, Action<T> action) where T : DBObject {
+            using (var trans = id.Database.TransactionManager.StartTransaction()) {
+                action(trans.GetObject(id, OpenMode.ForWrite) as T);
+                trans.Commit();
+            }
+        }
 
         // sos 注意： 操作对象 必须要在 using 代码块中并且通过GetObject获取后才能操作成功！否则报错：内部错误 eNotOpenForWrite
         public static void QOpenForWrite(this ObjectId id, Action<Entity> action){
@@ -37,7 +42,7 @@ namespace GoatAutoCAD.baseutil {
         }
 
 
-        public static T QOpenForRead<T>(this ObjectId id) where T : DBObject  {// newly 20130122
+        public static T QOpenForRead<T>(this ObjectId id) where T : DBObject  {
             using (var trans = id.Database.TransactionManager.StartOpenCloseTransaction()){
                 return trans.GetObject(id, OpenMode.ForRead) as T;
             }
@@ -49,7 +54,7 @@ namespace GoatAutoCAD.baseutil {
         /// <typeparam name="T">The type of object.</typeparam>
         /// <param name="ids">The object IDs.</param>
         /// <param name="action">The action.</param>
-        public static void QForEach<T>(this IEnumerable<ObjectId> ids, Action<T> action) where T : DBObject { // newly 20130520
+        public static void QForEach<T>(this IEnumerable<ObjectId> ids, Action<T> action) where T : DBObject {
             using (Transaction trans = GoatDB.db.TransactionManager.StartTransaction()) {
                 ids.Select(id => trans.GetObject(id, OpenMode.ForWrite) as T).ToList().ForEach(action);
                 trans.Commit();

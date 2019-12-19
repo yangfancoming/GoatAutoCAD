@@ -2,6 +2,7 @@
 
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.Geometry;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
 using GoatAutoCAD.baseutil;
@@ -19,8 +20,7 @@ namespace GoatAutoCAD {
         [CommandMethod("MyGroup", "layer1", "layer1", CommandFlags.Modal)]
         public void layer1() {
             // 新创建一个图层表记录，并命名为”MyLayer”
-            LayerTableRecord ltr = new LayerTableRecord();
-            ltr.Name = "luck";
+            LayerTableRecord ltr = new LayerTableRecord(){ Name = "lucky" };
             ltr.addLayerTableR1ecord();
         }
 
@@ -44,6 +44,14 @@ namespace GoatAutoCAD {
             doclock.Dispose();
         }
 
+
+
+        [CommandMethod("TestSetLayer")]
+        public void TestSetLayer(){
+            Line line = new Line(new Point3d(0, 0, 0),new Point3d(100, 200, 0));
+            ObjectId id = line.AddToModelSpace();
+            id.SetLayer("aaa");
+        }
 
     }
 
