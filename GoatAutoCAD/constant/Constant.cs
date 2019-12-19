@@ -13,10 +13,8 @@ namespace GoatAutoCAD.constant {
         // 删除实体  带1个参数的委托
         public static readonly Action<Entity> actionErase  = entity=>entity.Erase();
 
-
-
         // 改变 层表记录 颜色    带1个参数的委托
-        public static readonly Action<LayerTableRecord,short> layerColor  = (entity,colorIndex) => entity.Color = Color.FromColorIndex(ColorMethod.ByAci,colorIndex);
+        public static readonly Action<LayerTableRecord,short> layerColor  = (ltr,colorIndex) => ltr.Color = Color.FromColorIndex(ColorMethod.ByAci,colorIndex);
 
 
     }

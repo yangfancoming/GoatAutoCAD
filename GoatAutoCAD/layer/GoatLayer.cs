@@ -55,13 +55,26 @@ namespace GoatAutoCAD {
         }
 
 
+        //  layer5 和 layer6 两个方法比起来 感觉还是 layer6 要好一些
         [CommandMethod("layer5")]
         public void layer5() {
-            ObjectId objectId = GoatLayerUtil.GetLayerName("aaa");
+            // 通过 图层名称获得图层id
+            ObjectId objectId = GoatLayerUtil.GetLayerByName("aaa");
             if (objectId != ObjectId.Null) {
+                // 通过委托 更改图层颜色属性
                 objectId.QOpenForWrite(1,Constant.layerColor);
             }
             GoatMessageUtil.msg(objectId.ToString());
+        }
+
+
+        [CommandMethod("layer6")]
+        public void layer6() {
+            // 通过 图层名称获得图层id
+            ObjectId objectId = GoatLayerUtil.GetLayerByName("aaa");
+            if (objectId != ObjectId.Null) {
+                objectId.setLayerProperties(5,true);
+            }
         }
 
     }

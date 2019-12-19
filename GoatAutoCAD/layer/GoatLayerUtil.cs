@@ -1,4 +1,4 @@
-using System;
+using Autodesk.AutoCAD.Colors;
 using Autodesk.AutoCAD.DatabaseServices;
 using GoatAutoCAD.baseutil;
 using GoatAutoCAD.db;
@@ -16,18 +16,34 @@ namespace GoatAutoCAD.operate {
         /// 通过实体id 将实体添加到指定层  若层不存在 则创建
         /// </summary>
         /// <param name="entityId"> 待添加到指定层的实体id</param>
-        /// <param name="layer">添加到指定层的名称</param>
-        public static void SetLayer(this ObjectId entityId, string layer) {
-            entityId.QOpenForWrite<Entity>(entity => entity.LayerId = GetLayerName(layer,true));
+        /// <param name="layerName">添加到指定层的名称</param>
+        /// <param name="mark">如果没找到 是否新建</param>
+        public static void SetLayer(this ObjectId entityId, string layerName,bool mark = false) {
+            entityId.QOpenForWrite<Entity>(entity => entity.LayerId = GetLayerByName(layerName,mark));
         }
 
         /// <summary>
-        /// Gets layer ID by name. Creates new if not found.
+        /// 通过图层id  设置图层的各种属性
+        /// </summary>
+        /// <param name="ltrId"> 指定要设置的图层id</param>
+        /// <param name="coloIndex">要设置的颜色值</param>
+        /// <param name="isLocked"> 指定图层是否锁定 </param>
+        /// <param name="LineWeight"> 指定图层线宽 </param>
+        public static void setLayerProperties(this ObjectId ltrId, short coloIndex = 4,bool isLocked = false,LineWeight lineWeight = LineWeight.LineWeight050) {
+            ltrId.QOpenForWrite<LayerTableRecord>(ltr => {
+                ltr.Color = Color.FromColorIndex(ColorMethod.ByAci, coloIndex);
+                ltr.IsLocked = isLocked;
+                ltr.LineWeight = lineWeight;
+            });
+        }
+
+        /// <summary>
+        /// Gets layer ID by name
         /// </summary>
         /// <param name="layerName">The layer name.</param>
         /// <param name="mark"> 如果没找到 是否新建 </param>
         /// <returns>The layer ID.</returns>
-        public static ObjectId GetLayerName(string layerName,bool mark = false) {
+        public static ObjectId GetLayerByName(string layerName,bool mark = false) {
             if (mark) {
                 return GoatDB.GetSymbolTableRecord(GoatDB.db.LayerTableId, layerName, () => new LayerTableRecord {Name = layerName});
             }
