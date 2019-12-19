@@ -175,6 +175,12 @@
     </Compile>
     <Compile Include="myPlugin.cs" />
     <Compile Include="myCommands.cs" />
+    <Compile Include="netloadEx\GoatNetload.cs" />
+    <Compile Include="netloadEx\GoatNetload.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatNetload.resx</DependentUpon>
+    </Compile>
     <Compile Include="operate\GoatColorUtil.cs" />
     <Compile Include="operate\GoatCopyUtil.cs" />
     <Compile Include="operate\GoatDelete.cs" />
@@ -308,6 +314,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="myCommands.resx">
       <DependentUpon>myCommands.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="netloadEx\GoatNetload.resx">
+      <DependentUpon>GoatNetload.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>
