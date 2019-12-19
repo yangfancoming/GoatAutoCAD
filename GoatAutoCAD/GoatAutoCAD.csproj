@@ -153,6 +153,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GoatLayer.resx</DependentUpon>
     </Compile>
+    <Compile Include="layer\GoatLayerUtil.cs" />
+    <Compile Include="line\GoatLineUtil.cs" />
     <Compile Include="line\GoatLine.cs" />
     <Compile Include="line\GoatLine.Designer.cs">
       <AutoGen>True</AutoGen>

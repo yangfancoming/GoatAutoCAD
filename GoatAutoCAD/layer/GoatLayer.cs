@@ -28,7 +28,7 @@ namespace GoatAutoCAD {
         //
         [CommandMethod("MyGroup", "layer2", "layer2", CommandFlags.Modal)]
         public void layer2() {
-            string[] allLayerNames = GoatDB.GetAllLayerNames();
+            string[] allLayerNames = GoatLayerUtil.GetAllLayerNames();
             allLayerNames.ForEach(GoatMessageUtil.msg);
         }
 

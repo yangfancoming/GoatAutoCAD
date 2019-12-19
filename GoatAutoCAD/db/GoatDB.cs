@@ -15,9 +15,9 @@ namespace GoatAutoCAD.db {
 
 
         // 获取所有图层名称
-        public static string[] GetAllLayerNames(Database db = null) {
-            return GetSymbolTableRecordNames((db ?? GoatDB.db).LayerTableId);
-        }
+//        public static string[] GetAllLayerNames() {
+//            return GetSymbolTableRecordNames(db.LayerTableId);
+//        }
 
         public static string[] GetSymbolTableRecordNames(ObjectId symbolTableId) {
             return

@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using GoatAutoCAD.baseutil;
 using GoatAutoCAD.db;
 using GoatAutoCAD.interaction;
+using GoatAutoCAD.operate;
 
 namespace GoatAutoCAD.form {
 
@@ -15,7 +16,7 @@ namespace GoatAutoCAD.form {
         // 窗体加载事件
         private void SelectByLayer_Load(object sender, EventArgs e) {
             // 获取所有图层名称
-            string[] availableLayerNames = GoatDB.GetAllLayerNames();
+            string[] availableLayerNames = GoatLayerUtil.GetAllLayerNames();
             // 将所有图层名称 添加到checkListBox控件列表
             availableLayerNames.ForEach(choice => clb.Items.Add(choice));
         }
