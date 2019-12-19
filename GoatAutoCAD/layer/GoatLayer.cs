@@ -77,6 +77,16 @@ namespace GoatAutoCAD {
             }
         }
 
+
+        [CommandMethod("layer7")]
+        public void layer7() {
+            // 通过 图层名称获得图层id
+            ObjectId objectId = GoatLayerUtil.GetLayerByName("aaa");
+            if (objectId != ObjectId.Null) {
+                objectId.setCurrentLayer();
+            }
+        }
+
     }
 
 }

@@ -18,7 +18,7 @@ namespace GoatAutoCAD.db {
         public static string[] GetSymbolTableRecordNames(ObjectId symbolTableId) {
             return
                 // 通过符号表id获取符号表所有记录的id
-                GetSymbolTableRecords(symbolTableId)
+                GetSymbolTableRecordIds(symbolTableId)
                 // 通过符号表所有记录的id  从数据库中获取对应的实体
                 .QOpenForRead<SymbolTableRecord>()
                 // 投影实体集合集合中的 Name属性
@@ -31,7 +31,7 @@ namespace GoatAutoCAD.db {
 
 
         // 通过符号表id获取符号表所有记录的id
-        public static ObjectId[] GetSymbolTableRecords(ObjectId symbolTableId){
+        public static ObjectId[] GetSymbolTableRecordIds(ObjectId symbolTableId){
             using (var trans = symbolTableId.Database.TransactionManager.StartTransaction()){
                 SymbolTable table = trans.GetObject(symbolTableId, OpenMode.ForRead) as SymbolTable;
                 return table.Cast<ObjectId>().ToArray();

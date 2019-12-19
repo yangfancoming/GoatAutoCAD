@@ -23,6 +23,14 @@ namespace GoatAutoCAD.operate {
         }
 
         /// <summary>
+        ///  通过图层id 将该图层设置为 当前图层
+        /// </summary>
+        /// <param name="ltrId"> 指定要设置的图层id</param>
+        public static void setCurrentLayer(this ObjectId ltrId) {
+            ltrId.QOpenForWrite<LayerTableRecord>(ltr => { GoatDB.db.Clayer = ltrId; });
+        }
+
+        /// <summary>
         /// 通过图层id  设置图层的各种属性
         /// </summary>
         /// <param name="ltrId"> 指定要设置的图层id</param>
