@@ -34,7 +34,7 @@ namespace GoatAutoCAD{
 
         [CommandMethod("MyGroup", "line1", "line1", CommandFlags.Modal)]
         public void line1() {
-            var entityId = GoatPickUtill.GetEntityId("\nSpecify a Line", typeof(Line));
+            var entityId = GoatPickUtill.getEntityId("\nSpecify a Line", typeof(Line));
 
         }
 

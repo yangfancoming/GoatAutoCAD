@@ -15,7 +15,7 @@ namespace GoatAutoCAD.selector {
         /// <param name="msg">提示</param>
         /// <returns>返回Point3d</returns>
         /// <summary>
-        public static Point3d pickPoint(string msg){
+        public static Point3d getPoint(string msg){
             PromptPointOptions options = new PromptPointOptions(msg);
             PromptPointResult pt = ed.GetPoint(options);
             if (pt.Status != PromptStatus.OK){
@@ -30,7 +30,7 @@ namespace GoatAutoCAD.selector {
         /// </summary>
         /// <param name="msg">选择提示</param>
         /// <returns>实体对象</returns>
-        public static Entity GetEntity(string msg){
+        public static Entity getEntity(string msg){
             PromptEntityResult ent = ed.GetEntity(msg);
             if (ent.Status == PromptStatus.OK) {
                 return ent.ObjectId.QOpenForRead<Entity>();
@@ -38,7 +38,7 @@ namespace GoatAutoCAD.selector {
             return null;
         }
 
-        public static ObjectId GetEntityId(string msg){
+        public static ObjectId getEntityId(string msg){
             PromptEntityResult ent = ed.GetEntity(msg);
             if (ent.Status == PromptStatus.OK) {
                 return ent.ObjectId;
@@ -46,7 +46,7 @@ namespace GoatAutoCAD.selector {
             return ObjectId.Null;
         }
 
-        public static ObjectId GetEntityId(string message, Type allowedType, bool exactMatch = true)  {
+        public static ObjectId getEntityId(string message, Type allowedType, bool exactMatch = true)  {
             PromptEntityOptions opt = new PromptEntityOptions(message);
             // 设置用户选择指定类型之外的图形是的提示信息   此行代码必须在 AddAllowedClass 之前 否则报错
             opt.SetRejectMessage("Allowed type: " + allowedType.Name);

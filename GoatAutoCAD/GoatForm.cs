@@ -18,7 +18,7 @@ namespace GoatAutoCAD {
         private void button1_Click(object sender, EventArgs e){
             using (EditorUserInteraction edUsrInt = BaseData.ed.StartUserInteraction(this)){
                 //交互过程
-                Point3d pt =  GoatPickUtill.pickPoint("选择点");
+                Point3d pt =  GoatPickUtill.getPoint("选择点");
 //                _textBox = textBox1;
 //                _textBox.Text  = "(" + pt.X + "," + pt.Y + "," + pt.Z + ")";
                 this.textBox1.Text = "(" + pt.X + "," + pt.Y + "," + pt.Z + ")";
