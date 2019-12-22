@@ -106,6 +106,12 @@ namespace GoatAutoCAD
             Point3d pt = InteractionUtil.getPoint("\n 选择点对象",true);
             BaseData.ed.WriteMessage("\n 拾取的点坐标为:({0},{1},{2})" ,pt.X,pt.Y,pt.Z);
         }
+
+        [CommandMethod("MyGroup", "getCorner", "getCorner", CommandFlags.Modal)]
+        public void getCorner(){
+            Point3d pt = InteractionUtil.getCorner("\n 输入的矩形角点区域",Point3d.Origin);
+            BaseData.ed.WriteMessage("\n 输入的矩形角点区域:({0},{1},{2})" ,pt.X,pt.Y,pt.Z);
+        }
     }
 
 }

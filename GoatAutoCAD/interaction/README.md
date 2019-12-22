@@ -3,12 +3,14 @@
     使用Editor类的GetXXX函数获取用户输入的时候 ，需要传入
     PromptXXXOptions 参数来设置提示的参数，这里的 XXX 是代指特定的对象，如
     GetString
+    GetEntity
+    GetPoint
+    GetKeywords 
     GetDistance
     GetAngle
-    GetPoint
-
-    GetKeywords 
+    GetInteger
     GetCorner
+    
     通过这些交互函数获取的用户输入结果保存在 PromptResult 或者其派生类对象中，
     如 PromptDoubleResult,、PromptIntegerResult
     

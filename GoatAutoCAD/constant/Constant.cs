@@ -1,12 +1,13 @@
 using System;
 using Autodesk.AutoCAD.Colors;
 using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.Geometry;
 
 namespace GoatAutoCAD.constant {
 
     public static class Constant {
 
-
+        public static readonly Point3d NullPoint3d  = new Point3d(double.NaN, double.NaN, double.NaN);
         // 改变实体颜色    带1个参数的委托
         public static readonly Action<Entity,int> entityColor  = (entity,colorIndex) => entity.ColorIndex = colorIndex;
 
