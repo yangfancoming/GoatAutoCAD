@@ -50,11 +50,33 @@ namespace GoatAutoCAD
 
 
         // 获取用户输入整数
-        [CommandMethod("MyGroup", "pickInteger", "pickInteger", CommandFlags.Modal)]
-        public void pickInteger(){
+        [CommandMethod("MyGroup", "getInteger", "getInteger", CommandFlags.Modal)]
+        public void getInteger(){
             int pt = InteractionUtil.getInteger("\n 请输入整数：");
             GoatMessageUtil.msg("\n 输入的整数:({0})" ,pt);
         }
+
+        // 获取用户输入 字符串1
+        [CommandMethod("MyGroup", "getString1", "getString1", CommandFlags.Modal)]
+        public void getString1(){
+            string stringResult = InteractionUtil.getString("\n hello getString1 ：");
+            GoatMessageUtil.msg("\n 输入的字符串:({0})" ,stringResult);
+        }
+
+        // 获取用户输入 字符串2
+        [CommandMethod("MyGroup", "getString2", "getString2", CommandFlags.Modal)]
+        public void getString2(){
+            string stringResult = InteractionUtil.getString("\n hello getString2 ：","123",true);
+            GoatMessageUtil.msg("\n 输入的字符串:({0})" ,stringResult);
+        }
+
+        // 获取用户输入 字符串3
+        [CommandMethod("MyGroup", "getString3", "getString3", CommandFlags.Modal)]
+        public void getString3(){
+            string stringResult = InteractionUtil.getString("\n hello getString2 ：","heihei");
+            GoatMessageUtil.msg("\n 输入的字符串:({0})" ,stringResult);
+        }
+
 
     }
 

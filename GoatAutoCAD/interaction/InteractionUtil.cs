@@ -63,11 +63,23 @@ namespace GoatAutoCAD.interaction  {
         }
 
 
-        public static string getString(string message) {
-            var res = GoatDB.ed.GetString(message);
-            if (res.Status == PromptStatus.OK) return res.StringResult;
+
+        /// <summary>
+        /// 提示用户在 Command 提示光标处输入一个字符串
+        /// </summary>
+        /// <param name="message">用户输入命令后的提示信息</param>
+        /// <param name="defaultValue"> 如果用户不输入 则取默认值</param>
+        /// <param name="allowSpaces">AllowSpaces 属性控制是否可以输入空格，如果设置为 false，按空格键就终止输入 默认为 false sos 该参数测试无效</param>
+        /// <returns>The string.</returns>
+        public static string getString(string message, string defaultValu = null,bool allowSpaces = false) {
+            PromptStringOptions opt = new PromptStringOptions(message);
+            opt.DefaultValue = defaultValu;
+            opt.AllowSpaces = allowSpaces;
+            PromptResult res = GoatDB.ed.GetString(new PromptStringOptions(message) { DefaultValue = defaultValu });
+            if (res.Status == PromptStatus.OK)  return res.StringResult;
             return null;
         }
+
 
         /// <summary>
         /// 提示用户输入关键字
