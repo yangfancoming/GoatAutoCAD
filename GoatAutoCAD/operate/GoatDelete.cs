@@ -5,7 +5,7 @@ using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
 using GoatAutoCAD.baseutil;
 using GoatAutoCAD.constant;
-using GoatAutoCAD.selector;
+using GoatAutoCAD.interaction;
 
 [assembly: CommandClass(typeof(GoatDelete))]
 namespace GoatAutoCAD {
@@ -15,7 +15,7 @@ namespace GoatAutoCAD {
         // 报错：内部错误 eNotOpenForWrite
         [CommandMethod("MyGroup", "delete2", "delete2", CommandFlags.Modal)]
         public void delete2() {
-            ObjectId objectId = GoatPickUtill.getEntityId("\n 选择要删除的对象");
+            ObjectId objectId = InteractionUtil.getEntityId("\n 选择要删除的对象");
             objectId.QOpenForWrite(Constant.actionErase);
         }
 

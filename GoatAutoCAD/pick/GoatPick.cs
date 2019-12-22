@@ -5,7 +5,7 @@ using Autodesk.AutoCAD.Geometry;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
 using GoatAutoCAD.baseutil;
-using GoatAutoCAD.selector;
+using GoatAutoCAD.interaction;
 
 [assembly: CommandClass(typeof(GoatPic))]
 namespace GoatAutoCAD
@@ -16,7 +16,7 @@ namespace GoatAutoCAD
         // 命令行获取 用户拾取点
         [CommandMethod("MyGroup", "pickPoint1", "pickPoint1", CommandFlags.Modal)]
         public void pickPoint1(){
-            Point3d pt = GoatPickUtill.getPoint("\n 选择点对象");
+            Point3d pt = InteractionUtil.getPoint("\n 选择点对象");
             BaseData.ed.WriteMessage("\n 拾取的点坐标为:({0},{1},{2})" ,pt.X,pt.Y,pt.Z);
         }
 

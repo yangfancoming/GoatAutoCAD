@@ -4,8 +4,8 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
+using GoatAutoCAD.interaction;
 using GoatAutoCAD.operate;
-using GoatAutoCAD.selector;
 
 [assembly: CommandClass(typeof(GoatCopy))]
 namespace GoatAutoCAD
@@ -18,7 +18,7 @@ namespace GoatAutoCAD
         {
             Point3d sourcePt = new Point3d(0,0,0);
             Point3d targetPt = new Point3d(100,100,0);
-            Entity ent = GoatPickUtill.getEntity("\n 选择要删除的对象");
+            Entity ent = InteractionUtil.getEntity("\n 选择要删除的对象");
             GoatCopyUtil.copyById(ent.Id,sourcePt,targetPt);
         }
 

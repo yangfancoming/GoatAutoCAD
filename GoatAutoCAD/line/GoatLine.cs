@@ -6,7 +6,7 @@ using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
 using GoatAutoCAD.baseutil;
 using GoatAutoCAD.db;
-using GoatAutoCAD.selector;
+using GoatAutoCAD.interaction;
 
 [assembly: CommandClass(typeof(GoatLine))]
 namespace GoatAutoCAD{
@@ -34,7 +34,7 @@ namespace GoatAutoCAD{
 
         [CommandMethod("MyGroup", "line1", "line1", CommandFlags.Modal)]
         public void line1() {
-            var entityId = GoatPickUtill.getEntityId("\nSpecify a Line", typeof(Line));
+            var entityId = InteractionUtil.getEntityId("\nSpecify a Line", typeof(Line));
 
         }
 

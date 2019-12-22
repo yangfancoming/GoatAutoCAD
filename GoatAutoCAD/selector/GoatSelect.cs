@@ -4,6 +4,7 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
 using GoatAutoCAD.baseutil;
+using GoatAutoCAD.interaction;
 using GoatAutoCAD.operate;
 using GoatAutoCAD.selector;
 
@@ -14,7 +15,7 @@ namespace GoatAutoCAD {
 
         [CommandMethod("MyGroup", "select1", "select1", CommandFlags.Modal)]
         public void msg1() {
-            Entity ent = GoatPickUtill.getEntity("\n 选择对象");
+            Entity ent = InteractionUtil.getEntity("\n 选择对象");
             BaseData.ed.WriteMessage("\n 你选择的对象ObjectId:"+ent.ObjectId);
         }
 
