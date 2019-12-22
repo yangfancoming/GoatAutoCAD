@@ -10,6 +10,13 @@ namespace GoatAutoCAD.interaction  {
 
     public static class InteractionUtil {
 
+
+        public static double getAngle(string message) {
+            PromptDoubleResult res = GoatDB.ed.GetAngle(message);
+            if (res.Status == PromptStatus.OK) return res.Value;
+            return double.NaN;
+        }
+
         /// <summary>
         /// Gets distance.
         /// </summary>
@@ -17,9 +24,7 @@ namespace GoatAutoCAD.interaction  {
         /// <returns> 用户选择的两个点之间的距离</returns>
         public static double getDistance(string message) {
             var res = GoatDB.ed.GetDistance(message);
-            if (res.Status == PromptStatus.OK){
-                return res.Value;
-            }
+            if (res.Status == PromptStatus.OK) return res.Value;
             return double.NaN;
         }
 
@@ -38,9 +43,7 @@ namespace GoatAutoCAD.interaction  {
 
         public static ObjectId getEntityId(string msg){
             PromptEntityResult ent = GoatDB.ed.GetEntity(msg);
-            if (ent.Status == PromptStatus.OK) {
-                return ent.ObjectId;
-            }
+            if (ent.Status == PromptStatus.OK)  return ent.ObjectId;
             return ObjectId.Null;
         }
 
@@ -51,9 +54,7 @@ namespace GoatAutoCAD.interaction  {
             // 设置 允许用户选择的图形类型  eg：只允许选择直线类型
             opt.AddAllowedClass(allowedType, exactMatch);
             PromptEntityResult res = GoatDB.ed.GetEntity(opt);
-            if (res.Status == PromptStatus.OK){
-                return res.ObjectId;
-            }
+            if (res.Status == PromptStatus.OK) return res.ObjectId;
             return ObjectId.Null;
         }
 
@@ -67,9 +68,7 @@ namespace GoatAutoCAD.interaction  {
         public static Point3d getPoint(string msg){
             PromptPointOptions options = new PromptPointOptions(msg);
             PromptPointResult pt = GoatDB.ed.GetPoint(options);
-            if (pt.Status != PromptStatus.OK){
-                return new Point3d();
-            }
+            if (pt.Status != PromptStatus.OK) return new Point3d();
             // 获取用户选择点的坐标
             return pt.Value;
         }

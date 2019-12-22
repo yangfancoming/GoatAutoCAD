@@ -84,7 +84,12 @@ namespace GoatAutoCAD
             GoatMessageUtil.msg("\n 输入的距离:({0})" ,value);
         }
 
-
+        // 获取用户输入 距离
+        [CommandMethod("MyGroup", "getAngle", "getAngle", CommandFlags.Modal)]
+        public void getAngle(){
+            double value = InteractionUtil.getAngle("\n 输入 角度");
+            GoatMessageUtil.msg("\n 输入的 角度:({0})" ,value);
+        }
     }
 
 }
