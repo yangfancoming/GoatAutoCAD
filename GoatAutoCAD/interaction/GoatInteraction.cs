@@ -34,17 +34,25 @@ namespace GoatAutoCAD
             InteractionUtil.UnhighlightObjects(entityIds);
         }
 
-        [CommandMethod("MyGroup", "TestKeywords", "TestKeywords", CommandFlags.Modal)]
-        public void TestKeywords() {
+        [CommandMethod("MyGroup", "GetKeywords1", "GetKeywords1", CommandFlags.Modal)]
+        public void GetKeywords1() {
             string[] keys = { "A", "B", "C", "D" };
-            var key = InteractionUtil.GetKeywords("\nChoose an option", keys, 3);
+            var key = InteractionUtil.getKeywords("\nChoose an option", keys, 3);
             GoatMessageUtil.msg("You chose {0}.", key);
         }
+
+        [CommandMethod("MyGroup", "GetKeywords2", "GetKeywords2", CommandFlags.Modal)]
+        public void GetKeywords2() {
+            string[] keys = { "A", "B", "C", "D" };
+            var key = InteractionUtil.getKeywords("\nChoose an option", keys, 3);
+            GoatMessageUtil.msg("You chose {0}.", key);
+        }
+
 
         // 获取用户输入整数
         [CommandMethod("MyGroup", "pickInteger", "pickInteger", CommandFlags.Modal)]
         public void pickInteger(){
-            int pt = InteractionUtil.pickInteger("\n 请输入整数：");
+            int pt = InteractionUtil.getInteger("\n 请输入整数：");
             GoatMessageUtil.msg("\n 输入的整数:({0})" ,pt);
         }
 

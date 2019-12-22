@@ -8,21 +8,13 @@ namespace GoatAutoCAD.interaction  {
 
     public static class InteractionUtil {
 
-        /// <summary>
-        /// Highlights entities.
-        /// </summary>
-        /// <param name="entityIds">The entity IDs.</param>
-        public static void HighlightObjects(IEnumerable<ObjectId> entityIds){
-            entityIds.QForEach<Entity>(entity => entity.Highlight());
-        }
-        /// <summary>
-        /// Unhighlights entities.
-        /// </summary>
-        /// <param name="entityIds">The entity IDs.</param>
-        public static void UnhighlightObjects(IEnumerable<ObjectId> entityIds){
-            entityIds.QForEach<Entity>(entity => entity.Unhighlight());
-        }
 
+
+        public static string getString(string message) {
+            var res = GoatDB.ed.GetString(message);
+            if (res.Status == PromptStatus.OK) return res.StringResult;
+            return null;
+        }
 
         /// <summary>
         /// 提示用户输入关键字
@@ -31,8 +23,8 @@ namespace GoatAutoCAD.interaction  {
         /// <param name="keywords">The keywords.</param>
         /// <param name="defaultIndex">The default index.</param>
         /// <returns>The keyword result.</returns>
-        public static string GetKeywords(string message, string[] keywords, int defaultIndex = 0) {
-            var opt = new PromptKeywordOptions(message) { AllowNone = true };
+        public static string getKeywords(string message, string[] keywords, int defaultIndex = 0) {
+            PromptKeywordOptions opt = new PromptKeywordOptions(message) { AllowNone = true };
             keywords.ForEach(key => opt.Keywords.Add(key));
             opt.Keywords.Default = keywords[defaultIndex];
             var res = GoatDB.ed.GetKeywords(opt);
@@ -46,7 +38,7 @@ namespace GoatAutoCAD.interaction  {
         /// <param name="msg">提示</param>
         /// <returns>返回Point3d</returns>
         /// <summary>
-        public static int pickInteger(string msg){
+        public static int getInteger(string msg){
             PromptIntegerOptions options = new PromptIntegerOptions(msg){ AllowNone = false };
             PromptIntegerResult pt = GoatDB.ed.GetInteger(options);
             if (pt.Status == PromptStatus.OK) return pt.Value;
@@ -62,11 +54,24 @@ namespace GoatAutoCAD.interaction  {
         }
 
 
-        public static string GetString(string message) {
-            var res = GoatDB.ed.GetString(message);
-            if (res.Status == PromptStatus.OK) return res.StringResult;
-            return null;
+
+
+
+        /// <summary>
+        /// Highlights entities.
+        /// </summary>
+        /// <param name="entityIds">The entity IDs.</param>
+        public static void HighlightObjects(IEnumerable<ObjectId> entityIds){
+            entityIds.QForEach<Entity>(entity => entity.Highlight());
         }
+        /// <summary>
+        /// Unhighlights entities.
+        /// </summary>
+        /// <param name="entityIds">The entity IDs.</param>
+        public static void UnhighlightObjects(IEnumerable<ObjectId> entityIds){
+            entityIds.QForEach<Entity>(entity => entity.Unhighlight());
+        }
+
 
     }
 }

@@ -22,7 +22,7 @@ namespace GoatAutoCAD {
             Extents3d extents = ids.GetExtents();
             // 画出矩形后 返回矩形id
             ObjectId rectId = GoatPolylineUtil.RectangAdd(extents.MinPoint, extents.MaxPoint);
-            InteractionUtil.GetString("\nPress ENTER to reset...");
+            InteractionUtil.getString("\nPress ENTER to reset...");
             // 删除矩形
             rectId.QOpenForWrite(Constant.actionErase);
         }
