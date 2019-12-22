@@ -77,6 +77,13 @@ namespace GoatAutoCAD
             GoatMessageUtil.msg("\n 输入的字符串:({0})" ,stringResult);
         }
 
+        // 获取用户输入 距离
+        [CommandMethod("MyGroup", "GetDistance", "GetDistance", CommandFlags.Modal)]
+        public void GetDistance(){
+            double value = InteractionUtil.getDistance("\nSize");
+            GoatMessageUtil.msg("\n 输入的距离:({0})" ,value);
+        }
+
 
     }
 

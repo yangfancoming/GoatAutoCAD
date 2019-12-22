@@ -10,11 +10,23 @@ namespace GoatAutoCAD.interaction  {
 
     public static class InteractionUtil {
 
+        /// <summary>
+        /// Gets distance.
+        /// </summary>
+        /// <param name="message">用户输入命令后的提示信息</param>
+        /// <returns> 用户选择的两个点之间的距离</returns>
+        public static double getDistance(string message) {
+            var res = GoatDB.ed.GetDistance(message);
+            if (res.Status == PromptStatus.OK){
+                return res.Value;
+            }
+            return double.NaN;
+        }
 
         /// <summary>
         /// 提示用户选择单个实体
         /// </summary>
-        /// <param name="msg">选择提示</param>
+        /// <param name="msg">用户输入命令后的提示信息</param>
         /// <returns>实体对象</returns>
         public static Entity getEntity(string msg){
             PromptEntityResult ent = GoatDB.ed.GetEntity(msg);
@@ -49,7 +61,7 @@ namespace GoatAutoCAD.interaction  {
         /// <summary>
         /// 提示用户拾取点
         /// </summary>
-        /// <param name="msg">提示</param>
+        /// <param name="msg">用户输入命令后的提示信息</param>
         /// <returns>返回Point3d</returns>
         /// <summary>
         public static Point3d getPoint(string msg){
@@ -84,7 +96,7 @@ namespace GoatAutoCAD.interaction  {
         /// <summary>
         /// 提示用户输入关键字
         /// </summary>
-        /// <param name="message">The message.</param>
+        /// <param name="message">用户输入命令后的提示信息</param>
         /// <param name="keywords">The keywords.</param>
         /// <param name="defaultIndex">The default index.</param>
         /// <returns>The keyword result.</returns>
@@ -100,7 +112,7 @@ namespace GoatAutoCAD.interaction  {
         /// <summary> ed.GetDouble(new PromptDoubleOptions(message) { AllowNone = true })
         /// 提示用户输入整数
         /// </summary>
-        /// <param name="msg">提示</param>
+        /// <param name="msg">用户输入命令后的提示信息</param>
         /// <returns>返回Point3d</returns>
         /// <summary>
         public static int getInteger(string msg){
