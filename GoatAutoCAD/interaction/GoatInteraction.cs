@@ -2,8 +2,10 @@
 
 using System.Collections.Generic;
 using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.Geometry;
 using Autodesk.AutoCAD.Runtime;
 using GoatAutoCAD;
+using GoatAutoCAD.baseutil;
 using GoatAutoCAD.interaction;
 using GoatAutoCAD.operate;
 using GoatAutoCAD.selector;
@@ -89,6 +91,20 @@ namespace GoatAutoCAD
         public void getAngle(){
             double value = InteractionUtil.getAngle("\n 输入 角度");
             GoatMessageUtil.msg("\n 输入的 角度:({0})" ,value);
+        }
+
+
+        // 命令行获取 用户拾取点
+        [CommandMethod("MyGroup", "getPoint1", "getPoint1", CommandFlags.Modal)]
+        public void getPoint1(){
+            Point3d pt = InteractionUtil.getPoint("\n 选择点对象");
+            BaseData.ed.WriteMessage("\n 拾取的点坐标为:({0},{1},{2})" ,pt.X,pt.Y,pt.Z);
+        }
+
+        [CommandMethod("MyGroup", "getPoint2", "getPoint2", CommandFlags.Modal)]
+        public void getPoint2(){
+            Point3d pt = InteractionUtil.getPoint("\n 选择点对象",true);
+            BaseData.ed.WriteMessage("\n 拾取的点坐标为:({0},{1},{2})" ,pt.X,pt.Y,pt.Z);
         }
     }
 

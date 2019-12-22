@@ -63,16 +63,16 @@ namespace GoatAutoCAD.interaction  {
         /// 提示用户拾取点
         /// </summary>
         /// <param name="msg">用户输入命令后的提示信息</param>
-        /// <returns>返回Point3d</returns>
+        /// <param name="allowNone"> 是否允许用户输入空值  true 直接输入回车后自动选择0点  false 直接输入回车后提示无效点</param>
+        /// <returns>返回 用户选择点的坐标点</returns>
         /// <summary>
-        public static Point3d getPoint(string msg){
+        public static Point3d getPoint(string msg,bool allowNone = false){
             PromptPointOptions options = new PromptPointOptions(msg);
+            options.AllowNone = allowNone;
             PromptPointResult pt = GoatDB.ed.GetPoint(options);
             if (pt.Status != PromptStatus.OK) return new Point3d();
-            // 获取用户选择点的坐标
             return pt.Value;
         }
-
 
 
         /// <summary>
