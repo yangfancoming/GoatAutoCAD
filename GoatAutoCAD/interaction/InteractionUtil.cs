@@ -86,14 +86,21 @@ namespace GoatAutoCAD.interaction  {
         }
 
         /// <summary>
-        /// 提示用户输入关键字
+        /// 提示用户输入关键字   public PromptKeywordOptions(string messageAndKeywords, string globalKeywords)
         /// </summary>
         /// <param name="message">用户输入命令后的提示信息</param>
         /// <param name="keywords">The keywords.</param>
         /// <param name="defaultIndex">The default index.</param>
         /// <returns>The keyword result.</returns>
-        public static string getKeywords(string message, string[] keywords, int defaultIndex = 0) {
-            PromptKeywordOptions opt = new PromptKeywordOptions(message) { AllowNone = true };
+        public static string getKeywords(string messageAndKeywords, string globalKeywords,bool allowNone = false) {
+            PromptKeywordOptions opt = new PromptKeywordOptions(messageAndKeywords,globalKeywords) { AllowNone = allowNone };
+            var res = GoatDB.ed.GetKeywords(opt);
+            if (res.Status == PromptStatus.OK) return res.StringResult;
+            return null;
+        }
+
+        public static string getKeywords(string message, string[] keywords, int defaultIndex = 0,bool allowNone = false) {
+            PromptKeywordOptions opt = new PromptKeywordOptions(message) { AllowNone = allowNone };
             keywords.ForEach(key => opt.Keywords.Add(key));
             opt.Keywords.Default = keywords[defaultIndex];
             var res = GoatDB.ed.GetKeywords(opt);
