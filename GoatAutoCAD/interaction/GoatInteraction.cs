@@ -39,13 +39,13 @@ namespace GoatAutoCAD
         [CommandMethod("MyGroup", "GetKeywords1", "GetKeywords1", CommandFlags.Modal)]
         public void GetKeywords1() {
             string[] keys = { "A", "B", "C", "D" };
-            var key = InteractionUtil.getKeywords("\nChoose an option", keys, 3);
+            string key = InteractionUtil.getKeywords("\nChoose an option", keys, 3);
             GoatMessageUtil.msg("You chose {0}.", key);
         }
 
         [CommandMethod("MyGroup", "GetKeywords2", "GetKeywords2", CommandFlags.Modal)]
         public void GetKeywords2() {
-            var key = InteractionUtil.getKeywords( "Which entity do you want to create? [Circle/Block] : ",  "Circle Block");
+            string key = InteractionUtil.getKeywords( "Which entity do you want to create? [Circle/Block] : ",  "Circle Block");
             GoatMessageUtil.msg("You chose {0}.", key);
         }
 
