@@ -31,7 +31,7 @@ namespace GoatAutoCAD.interaction  {
         }
 
         /// <summary>
-        /// Gets distance.
+        ///  获取用户输入的距离
         /// </summary>
         /// <param name="message">用户输入命令后的提示信息</param>
         /// <returns> 用户选择的两个点之间的距离</returns>
@@ -47,7 +47,6 @@ namespace GoatAutoCAD.interaction  {
         /// <param name="msg">用户输入命令后的提示信息</param>
         /// <param name="allowNone"> 是否允许用户输入空值  true 直接输入回车后自动选择0点  false 直接输入回车后提示无效点</param>
         /// <returns>返回 用户选择点的坐标点</returns>
-        /// <summary>
         public static Point3d getPoint(string msg,bool allowNone = false){
             PromptPointOptions options = new PromptPointOptions(msg);
             options.AllowNone = allowNone;

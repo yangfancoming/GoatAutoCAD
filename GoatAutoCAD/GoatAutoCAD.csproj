@@ -274,6 +274,12 @@
       <DependentUpon>GoatSelect.resx</DependentUpon>
     </Compile>
     <Compile Include="selector\GoatSelectorUtil.cs" />
+    <Compile Include="temp\GoatTemp.cs" />
+    <Compile Include="temp\GoatTemp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoatTemp.resx</DependentUpon>
+    </Compile>
     <Compile Include="temp\Temp.cs" />
     <Compile Include="temp\Temp.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -402,6 +408,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="selector\GoatSelect.resx">
       <DependentUpon>GoatSelect.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="temp\GoatTemp.resx">
+      <DependentUpon>GoatTemp.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
     </EmbeddedResource>
